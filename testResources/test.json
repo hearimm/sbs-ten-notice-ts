@@ -1,0 +1,391 @@
+{
+    "programid": "22000009300",
+    "programcd": "ten",
+    "vodid": "V2000009300",
+    "category": "R",
+    "broaddate": "매일 22시 ~ 23시",
+    "production": "",
+    "copyright": "본 콘텐츠의 저작권은 SBS에 있습니다.",
+    "layers": [
+        {
+            "type": "1",
+            "layer": "top",
+            "link_url": "",
+            "target": "",
+            "isuse": true,
+            "color": "",
+            "israndom": false,
+            "items": [
+                {
+                    "image_url": "https://img2.sbs.co.kr/img/sbs_cms/WE/2021/04/02/7qp1617323972586.jpg",
+                    "image_alt": "배성재의 텐",
+                    "link_url": "http://programs.sbs.co.kr/radio/ten",
+                    "mediaid": "",
+                    "target": "_self",
+                    "title": "",
+                    "description": "",
+                    "conttype": "1",
+                    "color": "#ffffff",
+                    "targetage": 0,
+                    "imagetype": ""
+                }
+            ]
+        },
+        {
+            "type": "1",
+            "layer": "fixed",
+            "link_url": "",
+            "target": "",
+            "isuse": true,
+            "color": "",
+            "israndom": false,
+            "items": [
+                {
+                    "image_url": "//img2.sbs.co.kr/img/sbs_cms/WE/2020/08/04/WE16271322_ori.jpg",
+                    "image_alt": "다시보기",
+                    "link_url": "https://programs.sbs.co.kr/radio/ten/clips/57942",
+                    "mediaid": "",
+                    "target": "_self",
+                    "title": "",
+                    "description": "",
+                    "conttype": "1",
+                    "color": "",
+                    "targetage": 0
+                },
+                {
+                    "image_url": "//img2.sbs.co.kr/img/sbs_cms/WE/2019/09/16/WE71679892_ori.jpg",
+                    "image_alt": "SNS",
+                    "link_url": "https://www.instagram.com/sbs_ten/",
+                    "mediaid": "",
+                    "target": "_blank",
+                    "title": "",
+                    "description": "",
+                    "conttype": "1",
+                    "color": "",
+                    "targetage": 0
+                }
+            ]
+        },
+        {
+            "layer": "promotion",
+            "link_url": "",
+            "target": "",
+            "isuse": true,
+            "color": "#424242",
+            "israndom": false,
+            "items": [
+                {
+                    "image_url": "//img2.sbs.co.kr/img/sbs_cms/WE/2018/12/18/WE98048999_ori.jpg",
+                    "image_alt": "다시듣기/팟캐스트",
+                    "link_url": "https://programs.sbs.co.kr/radio/ten/aods/57944",
+                    "mediaid": "",
+                    "target": "_self",
+                    "title": "",
+                    "description": "",
+                    "conttype": "1",
+                    "color": "#6680a0",
+                    "targetage": 0
+                }
+            ]
+        },
+        {
+            "type": "",
+            "layer": "curation",
+            "link_url": "",
+            "target": "",
+            "isuse": false,
+            "color": "",
+            "israndom": false,
+            "items": []
+        },
+        {
+            "type": "",
+            "layer": "notice",
+            "link_url": "",
+            "target": "",
+            "title": "알립니다",
+            "isuse": true,
+            "color": "",
+            "israndom": false,
+            "description": "<b><span style=\"font-size:10pt\"><span style=\"color:rgb(239, 0, 124);font-family:Malgun Gothic, 굴림, Gulim, Arial;font-size:11pt\"><a href=\"https://programs.sbs.co.kr/radio/ten/boards/57955\" target=\"_self\"><span style=\"color:rgb(239, 0, 124);font-family:Malgun Gothic, 굴림, Gulim, Arial;font-size:11pt\">↳ [이벤트 신청 바로가기]</span></a> </span></span><span style=\"font-size:11pt\"><span style=\"font-size:10pt\"><span style=\"color:rgb(0, 117, 200)\"><span style=\"color:rgb(239, 0, 124);font-family:Malgun Gothic, 굴림, Gulim, Arial;font-size:11pt\"> </span></span></span></span></b><p><b><span style=\"font-size:11pt\"><span style=\"font-size:10pt\"><span style=\"color:rgb(239, 0, 124)\"><br /></span></span></span></b></p><p><b><span style=\"font-size:11pt\"><span style=\"font-size:10pt\"><span style=\"color:rgb(239, 0, 124)\"></span></span><span style=\"color:rgb(239, 0, 124);font-family:Malgun Gothic, 굴림, Gulim, Arial;font-size:11pt\"> </span></span></b></p><p><b><span style=\"font-size:10pt\"><span style=\"color:rgb(255, 170, 0)\"><a href=\"https://www.instagram.com/sbs_ten/\" target=\"_self\"><span style=\"color:rgb(255, 170, 0);font-family:Malgun Gothic, 굴림, Gulim, Arial;font-size:11pt\">[배텐 인스타그램 바로가기]</span></a></span></span></b></p><p><b><span style=\"font-size:10pt\"><span style=\"color:rgb(255, 170, 0)\"><a href=\"https://www.instagram.com/sbs_ten/\" target=\"_self\"><span style=\"color:rgb(255, 170, 0);font-family:Malgun Gothic, 굴림, Gulim, Arial;font-size:11pt\">└ @sbs_ten</span></a></span></span></b></p><p><b><span style=\"font-family:Malgun Gothic, 굴림, Gulim, Arial;font-size:11pt\"> </span></b></p><p><span style=\"font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial;font-size:11pt\">&lt;카카오TV 생녹방일정&gt;　　　　</span></p><p><b><span style=\"font-size:10pt\"><span style=\"font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial;font-size:11pt\">★녹음과정은 카카오TV로 생중계됩니다★</span></span></b></p><p><b><span style=\"font-size:10pt\"><span style=\"font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial;font-size:11pt\">☆변동될 경우, 본 알림창을 통해 알려 드리겠습니다☆ </span></span></b></p><p><b style=\"font-size:14.6667px;font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial\">5/3 (월)</b><b style=\"font-size:14.6667px;font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial\"> </b><b style=\"font-size:14.6667px;font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial\">20:30 </b><b style=\"font-size:14.6667px;font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial\">꼰묘꼰묘해 with. 러블리즈 지애</b></p><p><b style=\"font-size:14.6667px;font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial\">5/4 (화) </b><b style=\"font-size:14.6667px;font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial\">18:00 </b><b style=\"font-size:14.6667px;font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial\">비연애참피언스리그 어린이날 특집 with. 박문성 해설위원, 홍잠언</b><b style=\"font-size:14.6667px;font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial\">      </b></p><p><b style=\"font-size:14.6667px;font-family:&quot;Malgun Gothic&quot;, 굴림, Gulim, Arial\">5/6 (목) 19:30 말년이 편한 가불판단소 with. 이말년</b></p><p><b style=\"font-size:13.33px\"><span style=\"font-size:11pt\"></span></b></p><p><b style=\"font-size:10pt\"><span style=\"font-size:11pt\"><span style=\"font-size:10pt\"><b><span style=\"font-size:11pt\"><span style=\"font-size:10pt\"><b><span style=\"font-size:11pt\"></span></b></span></span></b></span></span></b></p>"
+        },
+        {
+            "type": "",
+            "layer": "daily",
+            "link_url": "",
+            "target": "",
+            "title": "매일코너",
+            "isuse": true,
+            "color": "",
+            "israndom": false,
+            "items": [
+                {
+                    "image_url": "",
+                    "image_alt": "",
+                    "link_url": "//programs.sbs.co.kr/radio/ten/boards/65973",
+                    "mediaid": "",
+                    "target": "_self",
+                    "title": "[참여]리빙포인트",
+                    "titlebold": true,
+                    "description": "",
+                    "color": ""
+                },
+                {
+                    "image_url": "",
+                    "image_alt": "",
+                    "link_url": "//programs.sbs.co.kr/radio/ten/boards/57959",
+                    "mediaid": "",
+                    "target": "_self",
+                    "title": "[참여]비연애 참피언스리그",
+                    "titlebold": true,
+                    "description": "",
+                    "color": ""
+                },
+                {
+                    "image_url": "",
+                    "image_alt": "",
+                    "link_url": "//programs.sbs.co.kr/radio/ten/boards/65974",
+                    "mediaid": "",
+                    "target": "_self",
+                    "title": "[참여]꼰묘꼰묘해",
+                    "titlebold": true,
+                    "description": "",
+                    "color": ""
+                }
+            ]
+        },
+        {
+            "type": "",
+            "layer": "weekly",
+            "link_url": "",
+            "target": "",
+            "title": "요일코너",
+            "isuse": true,
+            "color": "",
+            "israndom": false,
+            "weeks": [
+                {
+                    "title": "월",
+                    "titlebold": true,
+                    "guest": "정용국",
+                    "isviewradio": true,
+                    "isviewradio_past": true,
+                    "isonair": false,
+                    "day": 1,
+                    "items": [
+                        {
+                            "link_url": "//programs.sbs.co.kr/radio/ten/boards/64517",
+                            "mediaid": "",
+                            "target": "_self",
+                            "title": "막나가는 용한 상담소"
+                        }
+                    ]
+                },
+                {
+                    "title": "화",
+                    "titlebold": true,
+                    "guest": "윤태진",
+                    "isviewradio": true,
+                    "isviewradio_past": true,
+                    "isonair": false,
+                    "day": 2,
+                    "items": [
+                        {
+                            "link_url": "//programs.sbs.co.kr/radio/ten/boards/65973",
+                            "mediaid": "",
+                            "target": "_self",
+                            "title": "아재판독기 시즌2"
+                        }
+                    ]
+                },
+                {
+                    "title": "수",
+                    "titlebold": true,
+                    "guest": "박문성, 홍잠언",
+                    "isviewradio": false,
+                    "isviewradio_past": true,
+                    "isonair": false,
+                    "day": 3,
+                    "items": [
+                        {
+                            "link_url": "//programs.sbs.co.kr/radio/ten/boards/57959",
+                            "mediaid": "",
+                            "target": "_self",
+                            "title": "비연애 참피언스리그 어린이날 특집"
+                        }
+                    ]
+                },
+                {
+                    "title": "목",
+                    "titlebold": true,
+                    "guest": "이종범",
+                    "isviewradio": true,
+                    "isviewradio_past": true,
+                    "isonair": false,
+                    "day": 4,
+                    "items": [
+                        {
+                            "link_url": "//programs.sbs.co.kr/radio/ten/boards/62569",
+                            "mediaid": "",
+                            "target": "_self",
+                            "title": "배텐 월드컵"
+                        }
+                    ]
+                },
+                {
+                    "title": "금",
+                    "titlebold": true,
+                    "guest": "러블리즈(유지애)",
+                    "isviewradio": false,
+                    "isviewradio_past": true,
+                    "isonair": false,
+                    "day": 5,
+                    "items": [
+                        {
+                            "link_url": "//programs.sbs.co.kr/radio/ten/boards/65974",
+                            "mediaid": "",
+                            "target": "_self",
+                            "title": "꼰묘꼰묘해"
+                        }
+                    ]
+                },
+                {
+                    "title": "토",
+                    "titlebold": true,
+                    "guest": "이말년",
+                    "isviewradio": false,
+                    "isviewradio_past": true,
+                    "isonair": false,
+                    "day": 6,
+                    "items": [
+                        {
+                            "link_url": "//programs.sbs.co.kr/radio/ten/boards/59252",
+                            "mediaid": "",
+                            "target": "_self",
+                            "title": "말년이 편한 가불 판단소"
+                        }
+                    ]
+                },
+                {
+                    "title": "일",
+                    "titlebold": true,
+                    "guest": "넉살, 코드쿤스트, 우원재",
+                    "isviewradio": false,
+                    "isviewradio_past": true,
+                    "isonair": false,
+                    "day": 0,
+                    "items": [
+                        {
+                            "link_url": "//programs.sbs.co.kr/radio/ten/boards/58097",
+                            "mediaid": "",
+                            "target": "_self",
+                            "title": "넉까지 마.피아"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "",
+            "layer": "podcast",
+            "link_url": "https://programs.sbs.co.kr/radio/ten/aods/57944",
+            "target": "_self",
+            "title": "다시듣기/팟캐스트",
+            "isuse": true,
+            "color": "",
+            "israndom": false,
+            "items": [
+                {
+                    "image_url": "",
+                    "image_alt": "",
+                    "download_url": "https://programs.sbs.co.kr/radio/ten/episodedownload?fileUrl=http%3A%2F%2Fpodcastdown.sbs.co.kr%2Fpowerfm%2F2021%2F05%2FPOWER-V2000009300-20210506(22-00)-1620351484055.MP3%3Fvod_id%3DV2000009300%26podcast_id%3DP0000001884",
+                    "link_url": "http://radio.sbs.co.kr/gorealra/player/?podId=P0000001884&vodId=V2000009300",
+                    "mediaid": "",
+                    "target": "popup",
+                    "title": "(목) 배성재의 텐 - 배텐 월드컵 (이종범) - 2021.5.6",
+                    "date": "2021.05.06",
+                    "description": "",
+                    "conttype": "",
+                    "color": "",
+                    "targetage": 0
+                },
+                {
+                    "image_url": "",
+                    "image_alt": "",
+                    "download_url": "https://programs.sbs.co.kr/radio/ten/episodedownload?fileUrl=http%3A%2F%2Fpodcastdown.sbs.co.kr%2Fpowerfm%2F2021%2F05%2FPOWER-V2000009300-20210505(22-00)-1620266522963.MP3%3Fvod_id%3DV2000009300%26podcast_id%3DP0000001883",
+                    "link_url": "http://radio.sbs.co.kr/gorealra/player/?podId=P0000001883&vodId=V2000009300",
+                    "mediaid": "",
+                    "target": "popup",
+                    "title": "(수) 배성재의 텐 - 비연애 참피언스리그 어린이날 특집 (박문성, 홍잠언) - 2021.5.5",
+                    "date": "2021.05.05",
+                    "description": "",
+                    "conttype": "",
+                    "color": "",
+                    "targetage": 0
+                },
+                {
+                    "image_url": "",
+                    "image_alt": "",
+                    "download_url": "https://programs.sbs.co.kr/radio/ten/episodedownload?fileUrl=http%3A%2F%2Fpodcastdown.sbs.co.kr%2Fpowerfm%2F2021%2F05%2FPOWER-V2000009300-20210504(22-00)-1620262304888.MP3%3Fvod_id%3DV2000009300%26podcast_id%3DP0000001882",
+                    "link_url": "http://radio.sbs.co.kr/gorealra/player/?podId=P0000001882&vodId=V2000009300",
+                    "mediaid": "",
+                    "target": "popup",
+                    "title": "(화) 배성재의 텐 - 아재판독기 시즌2 (윤태진) - 2021.5.4",
+                    "date": "2021.05.04",
+                    "description": "",
+                    "conttype": "",
+                    "color": "",
+                    "targetage": 0
+                },
+                {
+                    "image_url": "",
+                    "image_alt": "",
+                    "download_url": "https://programs.sbs.co.kr/radio/ten/episodedownload?fileUrl=http%3A%2F%2Fpodcastdown.sbs.co.kr%2Fpowerfm%2F2021%2F05%2FPOWER-V2000009300-20210503(22-00)-1620092238500.MP3%3Fvod_id%3DV2000009300%26podcast_id%3DP0000001881",
+                    "link_url": "http://radio.sbs.co.kr/gorealra/player/?podId=P0000001881&vodId=V2000009300",
+                    "mediaid": "",
+                    "target": "popup",
+                    "title": "(월) 배성재의 텐 - 막나가는 용한 상담소 (정용국) - 2021.5.3",
+                    "date": "2021.05.03",
+                    "description": "",
+                    "conttype": "",
+                    "color": "",
+                    "targetage": 0
+                },
+                {
+                    "image_url": "",
+                    "image_alt": "",
+                    "download_url": "https://programs.sbs.co.kr/radio/ten/episodedownload?fileUrl=http%3A%2F%2Fpodcastdown.sbs.co.kr%2Fpowerfm%2F2021%2F05%2FPOWER-V2000009300-20210502(22-00)-1620019467120.MP3%3Fvod_id%3DV2000009300%26podcast_id%3DP0000001880",
+                    "link_url": "http://radio.sbs.co.kr/gorealra/player/?podId=P0000001880&vodId=V2000009300",
+                    "mediaid": "",
+                    "target": "popup",
+                    "title": "(일) 배성재의 텐 - 넉까지 마.피아 (넉살, 박문치, 치즈) - 2021.5.2",
+                    "date": "2021.05.02",
+                    "description": "",
+                    "conttype": "",
+                    "color": "",
+                    "targetage": 0
+                }
+            ]
+        },
+        {
+            "type": "",
+            "layer": "broad_content",
+            "link_url": "",
+            "target": "",
+            "title": "",
+            "isuse": false,
+            "color": "",
+            "israndom": false,
+            "items": []
+        },
+        {
+            "layer": "news",
+            "link_url": "",
+            "target": "",
+            "isuse": false,
+            "color": "",
+            "israndom": false,
+            "items": []
+        }
+    ]
+}
