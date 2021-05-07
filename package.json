@@ -4,8 +4,8 @@
   "description": "",
   "main": "script.ts",
   "scripts": {
-    "start": "ts-node script.ts",
-    "watch": "ts-node-dev --respawn --transpile-only script.ts",
+    "start": "ts-node src/script.ts",
+    "watch": "ts-node-dev --respawn --transpile-only src/script.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "hyuk",
