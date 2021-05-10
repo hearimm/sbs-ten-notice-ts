@@ -19,7 +19,7 @@ const getWeeklyLayer = async () => {
 };
 
 function makeMessage(today: WeeksEntity) {
-  return `${today.title}${today.isviewradio ? '(보라)' : ''}
-    ${today.items[0].title} With. ${today.guest}`;
+  return `${today.title}${today.isviewradio ? '(보라)' : ''}` + '\n' +
+    `${today.items[0].title} With. ${today.guest}`;
 }
 
