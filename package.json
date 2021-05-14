@@ -17,6 +17,7 @@
     "html-to-text": "^7.1.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
+    "node-telegram-bot-api": "^0.53.0",
     "tunnel": "0.0.6"
   },
   "devDependencies": {

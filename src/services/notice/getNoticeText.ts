@@ -1,16 +1,16 @@
 var _ = require('lodash');
 import { htmlToText } from '../../util/htmlToText';
 import { gotResponseBody } from '../../http/gotResponse';
-import { LayersEntity } from '../../interfaces/ResponseEntities';
 
 export async function getNoticeText() {
-    const noticeLayer = await getNoticeLayer();
-    return htmlToText(noticeLayer.description);
+    const description = await getNoticeLayerDescription();
+    return htmlToText(description);
 }
 
-const getNoticeLayer = async () => {
+const getNoticeLayerDescription = async ():Promise<string> => {
     const data = await gotResponseBody();
-    const layers = data.layers;
-    const noticeLayer: LayersEntity = _.find(layers, { 'layer': 'notice' });
-    return noticeLayer;
+    return _.chain(data).get('layers')
+    .find({ 'layer': 'notice' })
+    .get('description')
+    .value()
 };
