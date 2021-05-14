@@ -1,16 +1,11 @@
-import { getTodayRadioText } from './services/todayRadio/getTodayRadioText';
-import { getNoticeText } from './services/notice/getNoticeText';
-import { writeNoticeTextFile } from './services/notice/writeNoticeTextFile';
-import { sendNoticeMessage } from './services/telegram/sendNoticeMessage';
+import { noticeService } from './services/notice/noticeService'
+import { todayRadioService } from './services/todayRadio/todayRadioService';
 
-const run = async () => {
+const runAll = async () => {
     console.log('----------------------start--------------------')
-    const noticeText = await getNoticeText();
-    writeNoticeTextFile(noticeText);
-    sendNoticeMessage();
-
-    const todayRadioText = await getTodayRadioText();
-    console.log(todayRadioText)
+    await todayRadioService();
+    await noticeService();
 }
 
-run()
+runAll()
+
