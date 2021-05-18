@@ -14,4 +14,3 @@ export async function sendNoticeMessage() {
         console.log(error)
     }
 }
-
