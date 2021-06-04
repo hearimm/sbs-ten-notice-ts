@@ -6,7 +6,7 @@ require('dotenv').config()
 const runAll = async () => {
     console.log('----------------------start--------------------')
     // await todayRadioService();
-    // await noticeService();
+    await noticeService();
     await scheduleTextReaderService();
 }
 

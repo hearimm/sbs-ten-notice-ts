@@ -38,3 +38,8 @@ export const fileDelete = (path: fs.PathLike):void => {
 export const existsSync = (fileName: fs.PathLike):boolean => {
   return fs.existsSync(fileName)
 }
+
+export const clearDir = (path) => {
+  const fsExtra = require('fs-extra')
+  fsExtra.emptyDirSync(path)
+}
