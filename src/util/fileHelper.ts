@@ -9,6 +9,15 @@ export const fileWrite = (fileName = 'helloworld.txt'  , text ='Hello World!'): 
   }
 }
 
+export const readDir = (path: string) => {
+  try {
+    const data = fs.readdirSync(path)
+    return data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const readFile = (fileName = 'helloworld.txt'):string => {
   if(!existsSync(fileName)) {
     return ''
@@ -19,6 +28,18 @@ export const readFile = (fileName = 'helloworld.txt'):string => {
     return data
   } catch (err) {
     console.error(err)
+  }
+}
+
+export function getJSON(path) {
+  try {
+      if (!existsSync(path)) {
+          return
+      }
+      const json = JSON.parse(readFile(path))
+      return json
+  } catch (error) {
+      console.log(error)
   }
 }
 

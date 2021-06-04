@@ -7,25 +7,27 @@ const monthRegxp = new RegExp(/[0-1]?[0-9]\/[0-3]?[0-9]/);
 const timeRegxp = new RegExp(/[0-2]?[0-9]\:[0-5]?[0-9]/);
 
 export async function scheduleTextReaderService() {
+    const data = popQueue()
+    if (_.isEmpty(data)) {
+        console.info('popqueue data is empty')
+        return
+    }
     clearQueue('SCHEDULE_SEND_TARGET')
-    const noticeText = getNoticeTextFromResource();
-    const array = getScheduleArray(noticeText);
+    const array = getScheduleArray(data.text);
     writeScheduleJson(array)
 }
 
-function clearScheduleQueue() {
-    clearQueue('SCHEDULE_SEND_TARGET')
-}
 
-function getNoticeTextFromResource() {
+
+function popQueue() {
     const path = 'resource/queue/schedule/noticeLatest.json'
     try {
-        if(!existsSync(path)){
+        if (!existsSync(path)) {
             return
         }
         const json = JSON.parse(readFile(path))
-        // fileDelete(path) // pop
-        return json.text
+        fileDelete(path) // pop
+        return json
     } catch (error) {
         console.log(error)
     }
@@ -78,5 +80,4 @@ function writeScheduleJson(array: any[]) {
         }
     });
 }
-
 
