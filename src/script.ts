@@ -8,6 +8,7 @@ const config = require('dotenv').config()
 const runAll = async () => {
     moment.tz.setDefault("Asia/Seoul");
     console.log(moment().format('YYYYMMDD_HHmmss'))
+    // todo : makedir
     console.log('----------------------start--------------------')
     await noticeService();
     await scheduleTextReaderService();
