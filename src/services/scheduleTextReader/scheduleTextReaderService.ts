@@ -1,5 +1,5 @@
 import { existsSync, fileDelete, fileWrite, readFile } from "../../util/fileHelper"
-import moment from 'moment';
+import * as moment from 'moment'
 import { clearQueue, sendQueue } from "../../util/queueHelper";
 var _ = require('lodash');
 

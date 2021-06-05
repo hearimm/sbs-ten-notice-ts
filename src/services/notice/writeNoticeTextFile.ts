@@ -1,6 +1,6 @@
 import { fileWrite } from '../../util/fileHelper';
 import { sendQueue } from '../../util/queueHelper';
-import moment from 'moment';
+import * as moment from 'moment'
 import { isNoticeUpdated } from './isNoticeUpdated';
 
 export async function writeNoticeTextFile(noticeText: string) {

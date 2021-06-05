@@ -1,4 +1,4 @@
-import moment from "moment";
+import * as moment from 'moment'
 import { fileDelete, getJSON, readDir } from "../../util/fileHelper";
 import { sendQueue } from "../../util/queueHelper";
 
