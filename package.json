@@ -5,6 +5,7 @@
   "main": "script.ts",
   "scripts": {
     "start": "ts-node src/script.ts",
+    "tenpm": "ts-node src/tenPmCron.ts",
     "watch": "ts-node-dev --respawn --transpile-only src/script.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,12 +21,11 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "node-telegram-bot-api": "^0.53.0",
-    "tunnel": "0.0.6"
-  },
-  "devDependencies": {
+    "tunnel": "0.0.6",
     "@types/tunnel": "0.0.2",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.4"
-  }
+  },
+  "devDependencies": {}
 }
