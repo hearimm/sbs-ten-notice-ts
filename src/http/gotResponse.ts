@@ -1,6 +1,6 @@
 import got from 'got';
 import { HttpProxyAgent } from 'hpagent';
-import { ResponseBody } from '../Interfaces/ResponseEntities';
+import { ResponseBody } from '../interfaces/responseEntities';
 
 const gotResponse = async () => {
     try {
