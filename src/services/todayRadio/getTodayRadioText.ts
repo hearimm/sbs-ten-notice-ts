@@ -1,6 +1,7 @@
 var _ = require('lodash');
 import { gotResponseBody } from '../../http/gotResponse';
 import { ResponseBody, WeeksEntity } from '../../interfaces/ResponseEntities';
+import * as moment from 'moment-timezone'
 
 export async function getTodayRadioText() {
     const data = await gotResponseBody();
@@ -11,10 +12,11 @@ export async function getTodayRadioText() {
 
 function getToday(data: ResponseBody):WeeksEntity {
     const day = new Date().getDay();
+    const momentDay = parseInt(moment().format('d') + 0)
     const today = _.chain(data).get('layers')
         .find({ 'layer': 'weekly' })
         .get('weeks')
-        .find({ day: day })
+        .find({ day: momentDay })
         .value()
     return today;
 }
