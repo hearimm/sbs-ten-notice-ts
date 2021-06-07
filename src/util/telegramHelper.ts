@@ -9,6 +9,7 @@ export async function sendMessage(message: string) {
         const chatId = process.env.TELEGRAM_CHAT_ID; // TODO: .env file replace
         const text = message;
         await bot.sendMessage(chatId, text);
+        console.log('send telegram message', message)
     } catch (error) {
         console.log(error)
     }
