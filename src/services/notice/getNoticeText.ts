@@ -1,6 +1,6 @@
-var _ = require('lodash');
 import { htmlToText } from '../../util/htmlToText';
 import { gotResponseBody } from '../../http/gotResponse';
+import _ = require('lodash');
 
 export async function getNoticeText() {
     const description = await getNoticeLayerDescription();

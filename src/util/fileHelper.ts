@@ -1,5 +1,17 @@
 import * as fs from 'fs';
 
+export const mkdir = (path: fs.PathLike, options: fs.MakeDirectoryOptions & { recursive: true; }) => {
+  try {
+    fs.mkdir(path, options, (err) => {
+      if (err) throw err;
+    });
+    console.log('mkdir', path)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+
 export const fileWrite = (fileName = 'helloworld.txt'  , text ='Hello World!'): void => {
   try {
     fs.writeFileSync(fileName, text);
@@ -31,10 +43,12 @@ export const readFile = (fileName = 'helloworld.txt'):string => {
   }
 }
 
-export function getJSON(path) {
+export function getJSON(path:string) {
   try {
-      if (!existsSync(path)) {
-          return
+      if (!existsSync(path)) { return }
+      if(!path.endsWith('.json')){ 
+        console.log('is Not JSON file : ' + path)
+        return 
       }
       const json = JSON.parse(readFile(path))
       return json
@@ -57,7 +71,11 @@ export const fileDelete = (path: fs.PathLike):void => {
 }
 
 export const existsSync = (fileName: fs.PathLike):boolean => {
-  return fs.existsSync(fileName)
+  const result = fs.existsSync(fileName)
+  if(!result) {
+    console.info('target file not exists : ' + fileName)
+  }
+  return result
 }
 
 export const clearDir = (path) => {

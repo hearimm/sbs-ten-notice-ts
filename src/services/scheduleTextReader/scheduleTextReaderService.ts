@@ -1,7 +1,7 @@
 import { existsSync, fileDelete, fileWrite, readFile } from "../../util/fileHelper"
 import * as moment from 'moment'
 import { clearQueue, sendQueue } from "../../util/queueHelper";
-var _ = require('lodash');
+import _ = require("lodash");
 
 const monthRegxp = new RegExp(/[0-1]?[0-9]\/[0-3]?[0-9]/);
 const timeRegxp = new RegExp(/[0-2]?[0-9]\:[0-5]?[0-9]/);
@@ -9,7 +9,7 @@ const timeRegxp = new RegExp(/[0-2]?[0-9]\:[0-5]?[0-9]/);
 export async function scheduleTextReaderService() {
     const data = popQueue()
     if (_.isEmpty(data)) {
-        console.info('popqueue data is empty')
+        console.info('pop queue data is empty')
         return
     }
     clearQueue('SCHEDULE_SEND_TARGET')
@@ -22,9 +22,7 @@ export async function scheduleTextReaderService() {
 function popQueue() {
     const path = 'resource/queue/schedule/noticeLatest.json'
     try {
-        if (!existsSync(path)) {
-            return
-        }
+        if (!existsSync(path)) { return }
         const json = JSON.parse(readFile(path))
         fileDelete(path) // pop
         return json

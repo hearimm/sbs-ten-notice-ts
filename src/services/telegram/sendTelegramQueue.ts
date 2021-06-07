@@ -9,10 +9,17 @@ function sendAll() {
     const dirPath = process.env.TELEGRAM_QUEUE
     const data = readDir(dirPath)
     data.forEach( e=> {
-        const path = `${dirPath}/${e}`;
-        const json = getJSON(path)
-        sendMessage(json.text)
-        fileDelete(path)
+        
+        try {
+            const path = `${dirPath}/${e}`;
+            const json = getJSON(path)
+            sendMessage(json.text)
+            fileDelete(path)
+        } catch (error) {
+            const path = `${dirPath}/${e}`;
+            console.log(path)
+            console.log(error)
+        }
     })
 }
 
