@@ -2,18 +2,16 @@ import { existsSync, fileDelete, fileWrite, readFile } from "../../util/fileHelp
 import * as moment from 'moment'
 import { clearQueue, sendQueue } from "../../util/queueHelper";
 import _ = require("lodash");
+import { isNoticeUpdated } from "../notice/isNoticeUpdated";
+import { getNoticeText } from "../notice/getNoticeText";
 
 const monthRegxp = new RegExp(/[0-1]?[0-9]\/[0-3]?[0-9]/);
 const timeRegxp = new RegExp(/[0-2]?[0-9]\:[0-5]?[0-9]/);
 
 export async function scheduleTextReaderService() {
-    const data = popQueue()
-    if (_.isEmpty(data)) {
-        console.info('pop queue data is empty')
-        return
-    }
-    clearQueue('SCHEDULE_SEND_TARGET')
-    const array = getScheduleArray(data.text);
+    const noticeText = await getNoticeText()
+    if(!await isNoticeUpdated(noticeText)) { return }
+    const array = getScheduleArray(noticeText);
     writeScheduleJson(array)
 }
 

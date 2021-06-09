@@ -24,6 +24,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
+    "mongodb": "^3.6.9",
     "node-telegram-bot-api": "^0.53.0",
     "npm": "^7.16.0",
     "ts-node": "^9.1.1",

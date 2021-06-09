@@ -1,6 +1,6 @@
-import { readFile } from '../../util/fileHelper';
+ import { getNoticeLatest } from '../db/mongoDbHelper';
 
-export function isNoticeUpdated(noticeText: string) {
-    const beforeNoticeText = readFile(process.env.NOTICE_LATEST_PATH);
+export async function isNoticeUpdated(noticeText: string) {
+    const beforeNoticeText = await getNoticeLatest();
     return beforeNoticeText !== noticeText;
 }
