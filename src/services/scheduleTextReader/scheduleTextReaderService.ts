@@ -1,7 +1,7 @@
 import { existsSync, fileDelete, fileWrite, readFile } from "../../util/fileHelper"
 import * as moment from 'moment'
 import { clearQueue, sendQueue } from "../../util/queueHelper";
-import _ = require("lodash");
+import _ from "lodash";
 import { isNoticeUpdated } from "../notice/isNoticeUpdated";
 import { getNoticeText } from "../notice/getNoticeText";
 

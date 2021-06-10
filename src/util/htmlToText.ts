@@ -1,6 +1,5 @@
-export const htmlToText = (html: string) => {
-    const { htmlToText } = require('html-to-text');
-
+export const htmlToTextWordwrap = (html: string) => {
+    const { htmlToText } = require('html-to-text')
     // const html = '<h1>Hello World</h1>';
     const text = htmlToText(html, {
         wordwrap: 130

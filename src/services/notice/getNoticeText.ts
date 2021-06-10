@@ -1,16 +1,21 @@
-import { htmlToText } from '../../util/htmlToText';
+import { htmlToTextWordwrap } from '../../util/htmlToText';
 import { gotResponseBody } from '../../http/gotResponse';
-import _ = require('lodash');
+import _ from "lodash";
+import { ResponseBody } from '../../interfaces/responseEntities';
 
 export async function getNoticeText() {
-    const description = await getNoticeLayerDescription();
-    return htmlToText(description);
+    const description = await getNoticeLayerDescriptionInvoke();
+    return htmlToTextWordwrap(description);
 }
 
-const getNoticeLayerDescription = async ():Promise<string> => {
+const getNoticeLayerDescriptionInvoke = async ():Promise<string> => {
     const data = await gotResponseBody();
+    return getNoticeLayerDescription(data)
+};
+
+export const getNoticeLayerDescription = (data:ResponseBody): string => {
     return _.chain(data).get('layers')
     .find({ 'layer': 'notice' })
     .get('description')
     .value()
-};
+}

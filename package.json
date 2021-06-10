@@ -5,10 +5,11 @@
   "main": "script.ts",
   "scripts": {
     "init": "ts-node src/init.ts",
+    "compile" : "babel src --out-dir dist --extensions \".ts\"",
     "start": "npm run init && ts-node src/script.ts",
     "tenpm": "ts-node src/tenPmCron.ts",
     "watch": "ts-node-dev --respawn --transpile-only src/script.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "hyuk",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "hpagent": "^0.1.1",
     "html-to-text": "^7.1.1",
     "install": "^0.13.0",
+    "jest": "^27.0.4",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
@@ -33,6 +35,14 @@
     "typescript": "^4.2.4"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.170"
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/html-to-text": "^6.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/lodash": "^4.14.170",
+    "babel-jest": "^27.0.2",
+    "tslint": "^6.1.3"
   }
 }
