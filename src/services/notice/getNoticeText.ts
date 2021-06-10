@@ -1,6 +1,6 @@
 import { htmlToTextWordwrap } from '../../util/htmlToText';
 import { gotResponseBody } from '../../http/gotResponse';
-import _ from "lodash";
+import * as _ from "lodash";
 import { ResponseBody } from '../../interfaces/responseEntities';
 
 export async function getNoticeText() {

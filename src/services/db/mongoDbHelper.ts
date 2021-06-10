@@ -1,4 +1,4 @@
-import _ from "lodash";
+import * as _ from "lodash";
 import * as moment from 'moment-timezone'
 
 export async function insertNoticeLatestAndHistory(noticeText: string) {
