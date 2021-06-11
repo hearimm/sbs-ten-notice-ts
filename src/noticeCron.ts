@@ -9,7 +9,7 @@ const config = require('dotenv').config()
 const runAll = async () => {
     moment.tz.setDefault("Asia/Seoul");
     console.log(moment().format('YYYYMMDD_HHmmss'))
-    console.log('----------------------start--------------------')
+    console.log('----------------------notice start--------------------')
     try {
         const noticeText = await getNoticeText()
         if(!await isNoticeUpdated(noticeText)) { return }

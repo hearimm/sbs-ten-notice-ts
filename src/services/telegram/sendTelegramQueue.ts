@@ -9,6 +9,8 @@ export async function sendTelegramQueue() {
 async function sendAll() {
     const array = await getTelegram()
     if(_.isEmpty(array)){ return }
-    Promise.all(_.map(array, (e) => sendMessage(e.text)))
+    for (const e of array) {
+        await sendMessage(e.text)
+    }
     await clearCollection('telegram')
 }

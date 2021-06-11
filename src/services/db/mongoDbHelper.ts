@@ -55,6 +55,21 @@ export const clearCollection = async (collectionStr: string) => {
     }
 };
 
+export const deleteManyById = async (collectionStr: string, ids:string[]) => {
+    const client = await getClient()
+    if (!client) { return }
+
+    try {
+        const collection = client.db("sbs-ten-notice").collection(collectionStr);
+        const result = await collection.deleteMany({_id: {$in:ids} })
+        console.log('deleteManyById result '+ collectionStr, result.deletedCount)
+    } catch (err) {
+        console.log(err);
+    } finally {
+        client.close();
+    }
+};
+
 
 export async function insertMany(collectionStr: string, items: object[]) {
     const client = await getClient()

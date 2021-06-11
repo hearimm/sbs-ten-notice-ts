@@ -5,7 +5,7 @@ const config = require('dotenv').config()
 const runAll = async () => {
     moment.tz.setDefault("Asia/Seoul");
     console.log(moment().format('YYYYMMDD_HHmmss'))
-    console.log('----------------------start--------------------')
+    console.log('----------------------10:PM start--------------------')
     await todayRadioService();
 }
 
