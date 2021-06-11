@@ -7,6 +7,7 @@
     "init": "ts-node src/init.ts",
     "compile": "babel src --out-dir dist --extensions \".ts\"",
     "compile:tsc" : "npm run compile && tsc",
+    "build": "npm run compile && tsc",
     "start" : "npm run start:noticeCron && npm run script:scheduleCron",
     "start:noticeCron": "npm run compile:tsc && npm run script:noticeCron",
     "start:scheduleCron": "npm run compile:tsc && npm run script:scheduleCron",
