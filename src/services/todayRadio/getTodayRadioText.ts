@@ -12,8 +12,7 @@ export async function getTodayRadioText() {
 }
 
 function getToday(data: ResponseBody):WeeksEntity {
-    const day = new Date().getDay();
-    const momentDay = parseInt(moment().format('d') + 0, 10)
+    const momentDay = parseInt(moment().format('d'), 10)
     const today = _.chain(data).get('layers')
         .find({ 'layer': 'weekly' })
         .get('weeks')
