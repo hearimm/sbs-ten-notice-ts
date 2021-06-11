@@ -13,7 +13,7 @@
     "start:scheduleCron": "npm run compile:tsc && npm run script:scheduleCron",
     "start:tenPmCron": "npm run compile:tsc && npm run script:tenPmCron",
     "clear:collection": "npm run compile:tsc && npm run script:clearAllCollections",
-    "script:cron": "npm run noticeCron && npm run scheduleCron",
+    "script:cron": "npm run script:noticeCron && npm run script:scheduleCron",
     "script:noticeCron": "node ./dist/noticeCron.js",
     "script:scheduleCron": "node ./dist/scheduleCron.js",
     "script:tenPmCron": "node ./dist/tenPmCron.js",
