@@ -1,0 +1,1 @@
+export const API_URL = 'http://static.apis.sbs.co.kr/program-api/2.0/main/ten'

@@ -1,10 +1,11 @@
 import { gotResponseBody } from '../../http/gotResponse';
 import { ResponseBody, WeeksEntity } from '../../interfaces/responseEntities';
+import { API_URL } from '../../constant/apiUrl'
 var _ = require('lodash');
 const moment = require('moment-timezone');
 
 export async function getTodayRadioText() {
-    const data = await gotResponseBody('http://static.apis.sbs.co.kr/program-api/2.0/main/ten');
+    const data = await gotResponseBody(API_URL);
     const today = getToday(data);
 
     return makeMessage(today)
