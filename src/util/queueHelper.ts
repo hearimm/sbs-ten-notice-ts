@@ -1,3 +1,4 @@
+import { insertOne } from "../services/db/mongoDbHelper";
 import { clearDir, fileWrite } from "./fileHelper";
 
 export function sendQueue(type: string, data: object) {
@@ -38,8 +39,10 @@ function sendScheduleQueue(data: object) {
     fileWrite(`${process.env.SCHEDULE_QUEUE}/noticeLatest.json`, JSON.stringify(data, null, 2));
 }
 function sendScheduleSendTargetQueue(data: any) {
-    const time = data.time
-    fileWrite(`${process.env.SCHEDULE_SEND_TARGET_QUEUE}/${time}.json`, JSON.stringify(data, null, 2));
+    // const time = data.time
+    // const item = JSON.stringify(data, null, 2);
+    // fileWrite(`${process.env.SCHEDULE_SEND_TARGET_QUEUE}/${time}.json`, item);
+    insertOne('send_target',data)
 }
 function sendScheduleTelegramQueue(data: any) {
     const time = data.time

@@ -1,4 +1,4 @@
-import * as TelegramBot from 'node-telegram-bot-api';
+const TelegramBot = require('node-telegram-bot-api');
 
 export async function sendMessage(message: string) {
     try {

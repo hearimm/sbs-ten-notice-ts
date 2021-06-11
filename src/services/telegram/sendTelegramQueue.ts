@@ -1,25 +1,14 @@
-import { fileDelete, getJSON, readDir } from "../../util/fileHelper"
 import { sendMessage } from "../../util/telegramHelper";
+import { clearCollection, getTelegram } from "../db/mongoDbHelper";
+const _ = require("lodash");
 
 export async function sendTelegramQueue() {
-    sendAll()
+    await sendAll()
 }
 
-function sendAll() {
-    const dirPath = process.env.TELEGRAM_QUEUE
-    const data = readDir(dirPath)
-    data.forEach( e=> {
-        
-        try {
-            const path = `${dirPath}/${e}`;
-            const json = getJSON(path)
-            sendMessage(json.text)
-            fileDelete(path)
-        } catch (error) {
-            const path = `${dirPath}/${e}`;
-            console.log(path)
-            console.log(error)
-        }
-    })
+async function sendAll() {
+    const array = await getTelegram()
+    if(_.isEmpty(array)){ return }
+    Promise.all(_.map(array, (e) => sendMessage(e.text)))
+    await clearCollection('telegram')
 }
-

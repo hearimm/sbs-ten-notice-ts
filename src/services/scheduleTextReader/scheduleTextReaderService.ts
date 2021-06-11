@@ -1,42 +1,27 @@
 import { existsSync, fileDelete, fileWrite, readFile } from "../../util/fileHelper"
-import * as moment from 'moment'
 import { clearQueue, sendQueue } from "../../util/queueHelper";
 import * as _ from "lodash";
 import { isNoticeUpdated } from "../notice/isNoticeUpdated";
 import { getNoticeText } from "../notice/getNoticeText";
+import { clearCollection, insertMany } from "../db/mongoDbHelper";
+const moment = require('moment-timezone')
 
 const monthRegxp = new RegExp(/[0-1]?[0-9]\/[0-3]?[0-9]/);
 const timeRegxp = new RegExp(/[0-2]?[0-9]\:[0-5]?[0-9]/);
 
-export async function scheduleTextReaderService() {
-    const noticeText = await getNoticeText()
-    if(!await isNoticeUpdated(noticeText)) { return }
+export async function scheduleTextReaderService(noticeText:string) {
+    await clearCollection('send_target')
     const array = getScheduleArray(noticeText);
-    writeScheduleJson(array)
+    await insertMany('send_target',array);
 }
 
-
-
-function popQueue() {
-    const path = 'resource/queue/schedule/noticeLatest.json'
-    try {
-        if (!existsSync(path)) { return }
-        const json = JSON.parse(readFile(path))
-        fileDelete(path) // pop
-        return json
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-function getScheduleArray(noticeText: any) {
+function getScheduleArray(noticeText: string) {
     const splitData = noticeText.split('\n');
     let month = '';
     let time = '';
-    const resultArray = [];
-    for (let i = 0; i < splitData.length; i++) {
-        const e = splitData[i];
+    const resultArray:object[] = [];
 
+    for (const e of splitData) {
         if (hasMonthText(e)) {
             month = getMonthText(e);
         }
