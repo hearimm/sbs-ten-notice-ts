@@ -1,5 +1,5 @@
 import { todayRadioService } from './services/todayRadio/todayRadioService';
-var moment = require('moment-timezone');
+const moment = require('moment-timezone');
 
 const config = require('dotenv').config()
 const runAll = async () => {

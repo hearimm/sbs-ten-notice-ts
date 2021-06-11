@@ -15,10 +15,14 @@ test('two plus two is four', () => {
 });
 
 test('got', async () => {
-    const resp = await gotResponseBody()
+    const resp = await gotResponseBody('http://static.apis.sbs.co.kr/program-api/2.0/main/ten')
     expect(resp).toBeDefined()
     expect(resp.layers).not.toBeNull()
 } )
+
+test('should got error', async () => {
+    await expect(gotResponseBody('incorrect url string')).rejects.toThrow();
+});
 
 test('get description', () => {
     const testJson = require('../test_resources/test.json');

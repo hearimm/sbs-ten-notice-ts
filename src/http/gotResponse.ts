@@ -1,34 +1,28 @@
 import got from 'got';
 import { HttpProxyAgent } from 'hpagent';
+const _ = require('lodash');
 import { ResponseBody } from '../interfaces/responseEntities';
 
-
-
-export const gotResponseBody = async (): Promise<ResponseBody> => {
+export const gotResponseBody = async (url: string): Promise<ResponseBody> => {
     try {
-        const response = await gotResponse();
+        const response = await gotResponse(url);
         const body: ResponseBody = JSON.parse(response.body);
         return body;
     } catch (error) {
-        console.error(error); //=> 'Internal server error'
-        console.error(error.response); //=> 2
+        throw new Error(error);
     }
 };
 
-const gotResponse = async () => {
+const gotResponse = async (url:string) => {
     try {
-        if(process.env.PROXY){
-            return gotProxy();
-        }
-
-        return got('http://static.apis.sbs.co.kr/program-api/2.0/main/ten')
+        return process.env.PROXY ? gotProxy(url) : got(url);
     } catch (error) {
-        console.log(error); //=> 'Internal server error'
-        console.log(error.response); //=> 2
+        throw new Error(error);
     }
 };
-async function gotProxy() {
-    return got('http://static.apis.sbs.co.kr/program-api/2.0/main/ten', {
+
+async function gotProxy(url:string) {
+    return got(url, {
             agent: {
                 http: new HttpProxyAgent({
                     keepAlive: true,

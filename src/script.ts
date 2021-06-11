@@ -2,7 +2,7 @@ import { noticeService } from './services/notice/noticeService'
 import { scheduleTextReaderService } from './services/scheduleTextReader/scheduleTextReaderService';
 import { scheduleTargetSend } from './services/schedule/scheduleTargetSender';
 import { sendTelegramQueue } from './services/telegram/sendTelegramQueue';
-var moment = require('moment-timezone');
+const moment = require('moment-timezone');
 
 const config = require('dotenv').config()
 const runAll = async () => {

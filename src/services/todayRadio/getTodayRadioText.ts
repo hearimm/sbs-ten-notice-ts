@@ -1,10 +1,10 @@
-var _ = require('lodash');
 import { gotResponseBody } from '../../http/gotResponse';
 import { ResponseBody, WeeksEntity } from '../../interfaces/responseEntities';
-var moment = require('moment-timezone');
+var _ = require('lodash');
+const moment = require('moment-timezone');
 
 export async function getTodayRadioText() {
-    const data = await gotResponseBody();
+    const data = await gotResponseBody('http://static.apis.sbs.co.kr/program-api/2.0/main/ten');
     const today = getToday(data);
 
     return makeMessage(today)
@@ -12,7 +12,7 @@ export async function getTodayRadioText() {
 
 function getToday(data: ResponseBody):WeeksEntity {
     const day = new Date().getDay();
-    const momentDay = parseInt(moment().format('d') + 0)
+    const momentDay = parseInt(moment().format('d') + 0, 10)
     const today = _.chain(data).get('layers')
         .find({ 'layer': 'weekly' })
         .get('weeks')

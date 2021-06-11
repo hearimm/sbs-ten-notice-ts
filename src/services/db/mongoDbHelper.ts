@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-var moment = require('moment-timezone');
+const moment = require('moment-timezone');
 
 export async function insertNoticeLatestAndHistory(noticeText: string) {
     const client = await getClient()

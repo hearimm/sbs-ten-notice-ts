@@ -9,7 +9,7 @@ export async function getNoticeText() {
 }
 
 const getNoticeLayerDescriptionInvoke = async ():Promise<string> => {
-    const data = await gotResponseBody();
+    const data = await gotResponseBody('http://static.apis.sbs.co.kr/program-api/2.0/main/ten');
     return getNoticeLayerDescription(data)
 };
 
