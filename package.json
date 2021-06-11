@@ -5,8 +5,10 @@
   "main": "script.ts",
   "scripts": {
     "init": "ts-node src/init.ts",
-    "compile" : "babel src --out-dir dist --extensions \".ts\"",
+    "compile": "babel src --out-dir dist --extensions \".ts\"",
     "start": "npm run init && ts-node src/script.ts",
+    "start2": "npm run compile && tsc && npm run script",
+    "script": "node ./dist/script.js",
     "tenpm": "ts-node src/tenPmCron.ts",
     "watch": "ts-node-dev --respawn --transpile-only src/script.ts",
     "test": "jest"

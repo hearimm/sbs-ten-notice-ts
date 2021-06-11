@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import * as moment from 'moment-timezone'
+var moment = require('moment-timezone');
 
 export async function insertNoticeLatestAndHistory(noticeText: string) {
     const client = await getClient()
@@ -49,6 +49,7 @@ async function getClient() {
         return await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     } catch (error) {
         console.error(error)
+        throw new Error(error);
     }
     return null
 }

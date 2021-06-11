@@ -10,7 +10,7 @@ export const gotResponseBody = async (): Promise<ResponseBody> => {
         const body: ResponseBody = JSON.parse(response.body);
         return body;
     } catch (error) {
-        console.error(error); //=> 'Internal server error'    
+        console.error(error); //=> 'Internal server error'
         console.error(error.response); //=> 2
     }
 };
@@ -20,6 +20,7 @@ const gotResponse = async () => {
         if(process.env.PROXY){
             return gotProxy();
         }
+
         return got('http://static.apis.sbs.co.kr/program-api/2.0/main/ten')
     } catch (error) {
         console.log(error); //=> 'Internal server error'

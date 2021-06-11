@@ -6,7 +6,7 @@
       "moduleResolution": "node",
       "rootDir": "src",
       "outDir": "dist",
-      "allowSyntheticDefaultImports": true,
+      // "allowSyntheticDefaultImports": true,
       "sourceMap": true,
 
       // tsc를 사용해 .js 파일이 아닌 .d.ts 파일이 생성되었는지 확인합니다.

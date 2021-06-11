@@ -1,7 +1,7 @@
 var _ = require('lodash');
 import { gotResponseBody } from '../../http/gotResponse';
 import { ResponseBody, WeeksEntity } from '../../interfaces/responseEntities';
-import * as moment from 'moment-timezone'
+var moment = require('moment-timezone');
 
 export async function getTodayRadioText() {
     const data = await gotResponseBody();

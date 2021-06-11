@@ -2,9 +2,12 @@ import { htmlToText } from "html-to-text";
 import { gotResponseBody } from "../src/http/gotResponse";
 import { getNoticeLayerDescription, getNoticeText } from "../src/services/notice/getNoticeText";
 
+beforeAll(() => {
+    const config = require('dotenv').config()
+})
 test('two plus two is four', () => {
     expect(2 + 2).toBe(4);
-  });
+});
 
 test('got', async () => {
     const resp = await gotResponseBody()
