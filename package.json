@@ -6,14 +6,13 @@
   "scripts": {
     "init": "ts-node src/init.ts",
     "compile": "babel src --out-dir dist --extensions \".ts\"",
-    "compile:tsc" : "npm run compile && tsc",
+    "compile:tsc": "npm run compile && tsc",
     "build": "npm run compile && tsc",
-    "start" : "npm run start:noticeCron && npm run script:scheduleCron",
+    "start": "npm run start:noticeCron && npm run script:scheduleCron",
     "start:noticeCron": "npm run compile:tsc && npm run script:noticeCron",
     "start:scheduleCron": "npm run compile:tsc && npm run script:scheduleCron",
     "start:tenPmCron": "npm run compile:tsc && npm run script:tenPmCron",
     "clear:collection": "npm run compile:tsc && npm run script:clearAllCollections",
-
     "script:noticeCron": "node ./dist/noticeCron.js",
     "script:scheduleCron": "node ./dist/scheduleCron.js",
     "script:tenPmCron": "node ./dist/tenPmCron.js",
@@ -51,6 +50,7 @@
     "@types/html-to-text": "^6.0.0",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.170",
+    "babel-cli": "^6.26.0",
     "babel-jest": "^27.0.2",
     "tslint": "^6.1.3"
   }
