@@ -2,18 +2,18 @@
 {
     "compilerOptions": {
       "module": "commonjs",
-      // "esModuleInterop": true,
       "moduleResolution": "node",
       "rootDir": "src",
       "outDir": "dist",
-      // "allowSyntheticDefaultImports": true,
+      // "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
       "sourceMap": true,
 
-      // tsc를 사용해 .js 파일이 아닌 .d.ts 파일이 생성되었는지 확인합니다.
-      "declaration": true,
-      "emitDeclarationOnly": true,
-      // Babel이 TypeScript 프로젝트의 파일을 안전하게 트랜스파일할 수 있는지 확인합니다.
-      "isolatedModules": true
+      // // tsc를 사용해 .js 파일이 아닌 .d.ts 파일이 생성되었는지 확인합니다.
+      // "declaration": true,
+      // "emitDeclarationOnly": true,
+      // // Babel이 TypeScript 프로젝트의 파일을 안전하게 트랜스파일할 수 있는지 확인합니다.
+      // "isolatedModules": true
     },
 
     "include": [

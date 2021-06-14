@@ -1,6 +1,8 @@
 import { getNoticeLayerDescription, getNoticeText } from "../src/services/notice/getNoticeText";
 
 test('should getNoticeText not html', async () => {
+    require('dotenv').config()
+
     const result = await getNoticeText()
     expect(result).toMatch(/배텐/)
     expect(result).not.toMatch(/<p>/)
