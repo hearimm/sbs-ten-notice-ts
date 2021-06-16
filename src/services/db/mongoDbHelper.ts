@@ -1,5 +1,7 @@
 import * as _ from "lodash";
 const moment = require('moment-timezone');
+import { Db, MongoClient } from 'mongodb';
+
 
 export async function insertNoticeLatestAndHistory(noticeText: string) {
     const client = await getClient()
@@ -7,7 +9,7 @@ export async function insertNoticeLatestAndHistory(noticeText: string) {
 
     try {
         const collection = client.db("sbs-ten-notice").collection("notice_latest");
-        let res = await collection.findOneAndDelete({});
+        await collection.findOneAndDelete({});
         const newItem = {
             date: moment().format('YYYYMMDD_HHmmss'),
             text: noticeText
@@ -16,7 +18,8 @@ export async function insertNoticeLatestAndHistory(noticeText: string) {
         const historyCollection = client.db("sbs-ten-notice").collection("notice_history");
         const resultHistory = await historyCollection.insertOne(newItem)
 
-        console.log('insert result', result)
+        console.log('insert latest result', result.insertedId)
+        console.log('insert history result', resultHistory.insertedId)
     } catch (err) {
         console.log(err);
     } finally {
@@ -31,7 +34,7 @@ export async function insertOne(collectionStr: string, item: object) {
     try {
         const collection = client.db("sbs-ten-notice").collection(collectionStr);
         const result = await collection.insertOne(item)
-        console.log('insert result ' + collectionStr, result)
+        console.log('insert result ' + collectionStr, result.insertedId)
     } catch (err) {
         console.log(err);
     } finally {
@@ -48,6 +51,22 @@ export const clearCollection = async (collectionStr: string) => {
         const collection = client.db("sbs-ten-notice").collection(collectionStr);
         const result = await collection.deleteMany({})
         console.log('clearCollection result '+ collectionStr, result.deletedCount)
+    } catch (err) {
+        console.log(err);
+    } finally {
+        client.close();
+    }
+};
+
+export const getCollectionCount = async (collectionStr: string) => {
+    const client = await getClient()
+    if (!client) { return }
+
+    try {
+        const collection = client.db("sbs-ten-notice").collection(collectionStr);
+        const result = await collection.countDocuments({})
+        console.log('getCollectionCount result '+ collectionStr, result)
+        return result
     } catch (err) {
         console.log(err);
     } finally {
@@ -130,7 +149,7 @@ export async function getNoticeLatest(): Promise<string> {
     let res = null
     try {
         const collection = client.db("sbs-ten-notice").collection("notice_latest");
-        res = await collection.findOne();
+        res = await collection.findOne({});
     } catch (err) {
         console.log(err);
     } finally {
@@ -141,8 +160,7 @@ export async function getNoticeLatest(): Promise<string> {
 }
 
 async function getClient() {
-    const MongoClient = require('mongodb').MongoClient;
-    const uri = process.env.MONGO_URI
+    const uri = _.isNil(process.env.MONGO_TEST_URI) ? process.env.MONGO_URI : process.env.MONGO_TEST_URI
     try {
         return await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     } catch (error) {
