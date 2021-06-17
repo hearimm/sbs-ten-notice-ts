@@ -1,9 +1,8 @@
-const moment = require('moment-timezone');
+import moment from 'moment-timezone';
 import { getClient } from "../db/mongoDbHelper";
 
-export async function insertNoticeLatestAndHistory(noticeText: string) {
+export async function insertNoticeLatestAndHistory(noticeText: string):Promise<void> {
     const client = await getClient();
-    if (!client) { return; }
 
     try {
         const collection = client.db("sbs-ten-notice").collection("notice_latest");

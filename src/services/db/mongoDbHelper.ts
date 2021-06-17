@@ -1,12 +1,11 @@
 import _ from "lodash";
-import { Db, MongoClient } from 'mongodb';
+import { DeleteWriteOpResultObject, InsertOneWriteOpResult, InsertWriteOpResult, MongoClient, WithId } from 'mongodb';
 
-export async function insertOne(collectionStr: string, item: object) {
+export async function insertOne(collectionStr: string, item: Record<string, unknown>) :Promise<InsertOneWriteOpResult<WithId<Record<string, unknown>>>>{
     const client = await getClient()
     try {
         const collection = client.db("sbs-ten-notice").collection(collectionStr);
-        const result = await collection.insertOne(item)
-        console.log('insert result ' + collectionStr, result.insertedId)
+        return await collection.insertOne(item)
     } catch (err) {
         console.log(err);
     } finally {
@@ -15,12 +14,11 @@ export async function insertOne(collectionStr: string, item: object) {
 }
 
 
-export const clearCollection = async (collectionStr: string) => {
+export const clearCollection = async (collectionStr: string): Promise<DeleteWriteOpResultObject> => {
     const client = await getClient()
     try {
         const collection = client.db("sbs-ten-notice").collection(collectionStr);
-        const result = await collection.deleteMany({})
-        console.log('clearCollection result '+ collectionStr, result.deletedCount)
+        return await collection.deleteMany({})
     } catch (err) {
         console.log(err);
     } finally {
@@ -33,7 +31,6 @@ export const getCollectionCount = async (collectionStr: string) => {
     try {
         const collection = client.db("sbs-ten-notice").collection(collectionStr);
         const result = await collection.countDocuments({})
-        console.log('getCollectionCount result '+ collectionStr, result)
         return result
     } catch (err) {
         console.log(err);
@@ -42,12 +39,11 @@ export const getCollectionCount = async (collectionStr: string) => {
     }
 };
 
-export const deleteManyById = async (collectionStr: string, ids:string[]) => {
+export const deleteManyById = async (collectionStr: string, ids:string[]):Promise<DeleteWriteOpResultObject> => {
     const client = await getClient()
     try {
         const collection = client.db("sbs-ten-notice").collection(collectionStr);
-        const result = await collection.deleteMany({_id: {$in:ids} })
-        console.log('deleteManyById result '+ collectionStr, result.deletedCount)
+        return await collection.deleteMany({_id: {$in:ids} })
     } catch (err) {
         console.log(err);
     } finally {
@@ -56,12 +52,11 @@ export const deleteManyById = async (collectionStr: string, ids:string[]) => {
 };
 
 
-export async function insertMany(collectionStr: string, items: object[]) {
+export async function insertMany(collectionStr: string, items: Record<string, unknown>[]):Promise<InsertWriteOpResult<any>> {
     const client = await getClient()
     try {
         const collection = client.db("sbs-ten-notice").collection(collectionStr);
-        const result = await collection.insertMany(items)
-        console.log('insert result ' + collectionStr, result.insertedIds)
+        return await collection.insertMany(items)
     } catch (err) {
         console.log(err);
     } finally {
@@ -69,7 +64,7 @@ export async function insertMany(collectionStr: string, items: object[]) {
     }
 }
 
-export async function getClient() {
+export async function getClient():Promise<MongoClient> {
     const uri = _.isNil(process.env.MONGO_TEST_URI) ? process.env.MONGO_URI : process.env.MONGO_TEST_URI
     try {
         return await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })

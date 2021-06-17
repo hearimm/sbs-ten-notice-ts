@@ -19,7 +19,7 @@ function getScheduleArray(noticeText: string) {
     const splitData = noticeText.split('\n');
     let month = '';
     let time = '';
-    const resultArray:object[] = [];
+    const resultArray:Record<string, unknown>[] = [];
 
     for (const e of splitData) {
         if (hasMonthText(e)) {
@@ -52,13 +52,3 @@ function hasTimeText(text: string) {
 function getTimeText(text: string) {
     return timeRegxp.exec(text)[0]
 }
-
-function writeScheduleJson(array: any[]) {
-    array.forEach(e => {
-        const m = moment(e.time, 'YYYYMMDDHHmm');
-        if (m.isAfter(moment())) {
-            sendQueue('SCHEDULE_SEND_TARGET', e)
-        }
-    });
-}
-

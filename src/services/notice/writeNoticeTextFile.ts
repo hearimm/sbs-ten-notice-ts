@@ -1,7 +1,7 @@
 import { fileWrite } from '../../util/fileHelper';
 import { sendQueue } from '../../util/queueHelper';
 import { isNoticeUpdated } from './isNoticeUpdated';
-const moment = require('moment-timezone')
+import moment from 'moment-timezone';
 
 export async function writeNoticeTextFile(noticeText: string) { // deprecated
     if (await isNoticeUpdated(noticeText)) {

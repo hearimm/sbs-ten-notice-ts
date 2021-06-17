@@ -1,9 +1,10 @@
 import { Db, MongoClient } from 'mongodb';
 import { clearCollection, getCollectionCount } from '../src/services/db/mongoDbHelper';
 import { insertNoticeLatestAndHistory } from "../src/services/notice/insertNoticeLatestAndHistory";
+import dotenv from "dotenv";
 
 describe('mongodb Test', () => {
-  require('dotenv').config()
+  dotenv.config()
 
   const MONGO_TEST_URI = process.env.MONGO_TEST_URI
   const MONGO_DB_NAME = 'sbs-ten-notice'

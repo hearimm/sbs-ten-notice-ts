@@ -1,8 +1,9 @@
 import { Db, MongoClient } from 'mongodb';
 import { clearCollection, deleteManyById, getCollectionCount, insertMany, insertOne } from '../src/services/db/mongoDbHelper';
+import dotenv from 'dotenv'
 
 describe('mongoDb helper Test', () => {
-    require('dotenv').config()
+    dotenv.config()
   
     const MONGO_TEST_URI = process.env.MONGO_TEST_URI
     const MONGO_DB_NAME = 'sbs-ten-notice'
@@ -22,35 +23,36 @@ describe('mongoDb helper Test', () => {
     });
   
     test('should clear collection before test', async () => {
-      const users = db.collection('users');
-      await clearCollection('users');
-      const count = await users.find({}).count()
-      expect(count).toBe(0)
+      const result = await clearCollection('users');
+      expect(result.result.ok).toBe(1)
     });
   
     test('should insertOne', async () => {
       const mockUser = {_id: 'some-user-id', name: 'John'};
-      await insertOne('users',mockUser)
-      const users = db.collection('users');
-      const insertedUser = await users.findOne({_id: 'some-user-id'});
-      expect(insertedUser).toEqual(mockUser);
+      const result = await insertOne('users',mockUser)
+      expect(result.result.ok).toBe(1)
     });
   
     test('should insertMany and DeleteMany', async () => {
       const mockUser = [{_id: '1', name: 'John'}, {_id: '2', name: 'John2'}];
-      await insertMany('insertMany',mockUser)
-  
+      const result = await insertMany('insertMany',mockUser)
+      expect(result.result.ok).toBe(1)
+      expect(result.insertedCount).toBe(2)
+
       const insertCount = await getCollectionCount('insertMany')
       expect(insertCount).toBe(2)
-  
-      await deleteManyById('insertMany', ['1','2'])
+
+      const delResult = await deleteManyById('insertMany', ['1','2'])
+      expect(delResult.result.ok).toBe(1)
+      expect(delResult.deletedCount).toBe(2)
       const delCount = await getCollectionCount('insertMany')
       expect(delCount).toBe(0)
     });
   
     test('should clear collection after test', async () => {
       const users = db.collection('users');
-      await clearCollection('users');
+      const result = await clearCollection('users');
+      expect(result.result.ok).toBe(1)
       const count = await users.find({}).count()
       expect(count).toBe(0)
     });
