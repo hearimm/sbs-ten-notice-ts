@@ -1,26 +1,27 @@
 import moment from 'moment-timezone';
-import { InsertOneWriteOpResult } from 'mongodb';
-import { getClient } from "../db/mongoDbHelper";
+import { connect, Mongoose } from 'mongoose';
+import { NoticeLatest, NoticeLatestModel } from '../db/model/noticeLatestModel';
+import { NoticeHistoryModel } from '../db/model/noticeHistoryModel';
 
-export async function insertNoticeLatestAndHistory(noticeText: string):Promise<{ latest: InsertOneWriteOpResult<any>; history: InsertOneWriteOpResult<any>; }> {
-    const client = await getClient();
 
-    try {
-        const collection = client.db("sbs-ten-notice").collection("notice_latest");
-        await collection.findOneAndDelete({});
+export async function insertNoticeLatestAndHistory(noticeText: string):Promise<{ latest: NoticeLatest; history: NoticeLatest; }> {
+    let mongoose:Mongoose
+    try{
+        mongoose = await connect(process.env.MONGO_URI + '/sbs-ten-notice', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        NoticeLatestModel.findOneAndDelete({});
         const newItem = {
             date: moment().format('YYYYMMDD_HHmmss'),
             text: noticeText
         };
-        const result = await collection.insertOne(newItem);
-        const historyCollection = client.db("sbs-ten-notice").collection("notice_history");
-        const resultHistory = await historyCollection.insertOne(newItem);
-
+        const result = await new NoticeLatestModel(newItem).save()
+        const resultHistory = await new NoticeHistoryModel(newItem).save()
         return {latest: result, history: resultHistory}
-    } catch (err) {
-        console.log(err);
-        throw new Error(err);
-    } finally {
-        client.close();
+    }catch(err){
+        throw new Error(err)
+    }finally {
+        mongoose.connection.close()
     }
 }
