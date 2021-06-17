@@ -1,5 +1,6 @@
 import { sendMessage } from "../../util/telegramHelper";
-import { clearCollection, getTelegram } from "../db/mongoDbHelper";
+import { clearCollection } from "../db/mongoDbHelper";
+import { getTelegram } from "./getTelegram";
 const _ = require("lodash");
 
 export async function sendTelegramQueue() {

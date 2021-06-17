@@ -1,5 +1,6 @@
 import { Db, MongoClient } from 'mongodb';
-import { clearCollection, getCollectionCount, insertNoticeLatestAndHistory, insertOne } from '../src/services/db/mongoDbHelper';
+import { clearCollection, deleteManyById, getCollectionCount, insertMany, insertOne } from '../src/services/db/mongoDbHelper';
+import { insertNoticeLatestAndHistory } from "../src/services/notice/insertNoticeLatestAndHistory";
 
 describe('mongodb Test', () => {
   require('dotenv').config()
@@ -56,6 +57,18 @@ describe('mongodb Test', () => {
     const users = db.collection('users');
     const insertedUser = await users.findOne({_id: 'some-user-id'});
     expect(insertedUser).toEqual(mockUser);
+  });
+
+  test('should insertMany and DeleteMany', async () => {
+    const mockUser = [{_id: '1', name: 'John'}, {_id: '2', name: 'John2'}];
+    await insertMany('insertMany',mockUser)
+
+    const insertCount = await getCollectionCount('insertMany')
+    expect(insertCount).toBe(2)
+
+    await deleteManyById('insertMany', ['1','2'])
+    const delCount = await getCollectionCount('insertMany')
+    expect(delCount).toBe(0)
   });
 
   test('should clear after test collection', async () => {

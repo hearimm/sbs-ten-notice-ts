@@ -1,4 +1,4 @@
-import { insertNoticeLatestAndHistory } from "../db/mongoDbHelper";
+import { insertNoticeLatestAndHistory } from "./insertNoticeLatestAndHistory";
 import { isNoticeUpdated } from "./isNoticeUpdated";
 
 export async function noticeService(noticeText: string) {

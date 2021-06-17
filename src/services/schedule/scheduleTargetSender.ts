@@ -1,4 +1,5 @@
-import { deleteManyById, getScheduleToTelegram, insertMany } from "../db/mongoDbHelper";
+import { deleteManyById, insertMany } from "../db/mongoDbHelper";
+import { getScheduleToTelegram } from "./getScheduleToTelegram";
 const _ = require("lodash");
 
 export async function scheduleTargetSend() {

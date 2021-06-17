@@ -1,13 +1,8 @@
 import * as _ from "lodash";
 import { getClient } from "../db/mongoDbHelper";
 
-export async function isNoticeUpdated(noticeText: string) {
-    const beforeNoticeText = await getNoticeLatest();
-    return beforeNoticeText !== noticeText;
-}
 
-
-async function getNoticeLatest(): Promise<string> {
+export async function getNoticeLatest(): Promise<string> {
     const client = await getClient();
     if (!client) { return; }
 
