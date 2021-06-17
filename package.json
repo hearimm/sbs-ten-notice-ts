@@ -18,7 +18,8 @@
     "script:scheduleCron": "node ./dist/scheduleCron.js",
     "script:tenPmCron": "node ./dist/tenPmCron.js",
     "script:clearAllCollections": "node ./dist/clearAllCollections.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint . --ext .js,.ts"
   },
   "author": "hyuk",
   "license": "ISC",
