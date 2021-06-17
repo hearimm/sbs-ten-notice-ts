@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { DeleteWriteOpResultObject, InsertOneWriteOpResult, InsertWriteOpResult, MongoClient, WithId } from 'mongodb';
 
 export async function insertOne(collectionStr: string, item: Record<string, unknown>) :Promise<InsertOneWriteOpResult<WithId<Record<string, unknown>>>>{
@@ -26,7 +25,7 @@ export const clearCollection = async (collectionStr: string): Promise<DeleteWrit
     }
 };
 
-export const getCollectionCount = async (collectionStr: string) => {
+export const getCollectionCount = async (collectionStr: string):Promise<number> => {
     const client = await getClient()
     try {
         const collection = client.db("sbs-ten-notice").collection(collectionStr);
