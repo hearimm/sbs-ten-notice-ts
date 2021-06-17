@@ -1,5 +1,5 @@
 import { Db, MongoClient } from 'mongodb';
-import { clearCollection, getCollectionCount } from '../src/services/db/mongoDbHelper';
+import { clearCollection } from '../src/services/db/mongoDbHelper';
 import { insertNoticeLatestAndHistory } from "../src/services/notice/insertNoticeLatestAndHistory";
 import dotenv from "dotenv";
 

@@ -1,12 +1,9 @@
 import { API_URL } from "../src/constant/apiUrl";
 import { gotResponseBody } from "../src/http/gotResponse";
+import dotenv from 'dotenv'
 
 beforeAll(() => {
-    const config = require('dotenv').config()
-})
-
-beforeEach(() => {
-    const config = require('dotenv').config()
+    dotenv.config({ path: '.env.test' })
 })
 
 test('got', async () => {
