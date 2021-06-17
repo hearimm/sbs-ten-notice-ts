@@ -1,6 +1,6 @@
-const TelegramBot = require('node-telegram-bot-api');
+import TelegramBot from 'node-telegram-bot-api';
 
-export async function sendMessage(message: string) {
+export async function sendMessage(message: string): Promise<string> {
     try {
         // replace the value below with the Telegram token you receive from @BotFather
         const token = process.env.TELEGRAM_TOKEN;

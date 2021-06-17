@@ -1,6 +1,7 @@
 import * as fs from 'fs';
+import fsExtra from 'fs-extra'
 
-export const mkdir = (path: fs.PathLike, options: fs.MakeDirectoryOptions & { recursive: true; }) => {
+export const mkdir = (path: fs.PathLike, options: fs.MakeDirectoryOptions & { recursive: true; }):void => {
   try {
     fs.mkdir(path, options, (err) => {
       if (err) throw err;
@@ -21,7 +22,7 @@ export const fileWrite = (fileName = 'helloworld.txt'  , text ='Hello World!'): 
   }
 }
 
-export const readDir = (path: string) => {
+export const readDir = (path: string):string[] => {
   try {
     const data = fs.readdirSync(path)
     return data
@@ -43,12 +44,12 @@ export const readFile = (fileName = 'helloworld.txt'):string => {
   }
 }
 
-export function getJSON(path:string) {
+export function getJSON(path:string):Record<string,unknown> {
   try {
       if (!existsSync(path)) { return }
-      if(!path.endsWith('.json')){ 
+      if(!path.endsWith('.json')){
         console.log('is Not JSON file : ' + path)
-        return 
+        return
       }
       const json = JSON.parse(readFile(path))
       return json
@@ -78,7 +79,6 @@ export const existsSync = (fileName: fs.PathLike):boolean => {
   return result
 }
 
-export const clearDir = (path) => {
-  const fsExtra = require('fs-extra')
+export const clearDir = (path: string):void => {
   fsExtra.emptyDirSync(path)
 }

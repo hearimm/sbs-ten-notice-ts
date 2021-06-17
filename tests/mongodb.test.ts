@@ -1,4 +1,4 @@
-import { Db, MongoClient } from 'mongodb';
+import { MongoClient } from 'mongodb';
 import { clearCollection } from '../src/services/db/mongoDbHelper';
 import { insertNoticeLatestAndHistory } from "../src/services/notice/insertNoticeLatestAndHistory";
 import dotenv from "dotenv";
@@ -7,16 +7,13 @@ describe('mongodb Test', () => {
   dotenv.config({ path: '.env.test' })
 
   const MONGO_TEST_URI = process.env.MONGO_URI
-  const MONGO_DB_NAME = 'sbs-ten-notice'
   let connection: MongoClient;
-  let db: Db;
 
   beforeAll(async () => {
     connection = await MongoClient.connect(MONGO_TEST_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
-    db = connection.db(MONGO_DB_NAME);
   });
 
   afterAll(async () => {

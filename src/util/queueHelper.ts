@@ -1,7 +1,7 @@
 import { insertOne } from "../services/db/mongoDbHelper";
 import { clearDir, fileWrite } from "./fileHelper";
 
-export function sendQueue(type: string, data: object) {
+export function sendQueue(type: string, data: Record<string,unknown>): void {
     switch (type) {
         case "NOTICE":
             sendTelegramQueue(data)
@@ -19,7 +19,7 @@ export function sendQueue(type: string, data: object) {
     }
 }
 
-export function clearQueue(type: string) {
+export function clearQueue(type: string):void {
     switch (type) {
         case "NOTICE":
             throw new Error("Not implement clear queue notice");
@@ -32,10 +32,10 @@ export function clearQueue(type: string) {
 }
 
 
-function sendTelegramQueue(data: object) {
+function sendTelegramQueue(data: Record<string,unknown>) {
     fileWrite(`${process.env.TELEGRAM_QUEUE}/noticeLatest.json`, JSON.stringify(data, null, 2));
 }
-function sendScheduleQueue(data: object) {
+function sendScheduleQueue(data: Record<string,unknown>) {
     fileWrite(`${process.env.SCHEDULE_QUEUE}/noticeLatest.json`, JSON.stringify(data, null, 2));
 }
 function sendScheduleSendTargetQueue(data: any) {

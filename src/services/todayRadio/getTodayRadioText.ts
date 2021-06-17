@@ -1,10 +1,10 @@
 import { gotResponseBody } from '../../http/gotResponse';
 import { ResponseBody, WeeksEntity } from '../../interfaces/responseEntities';
 import { API_URL } from '../../constant/apiUrl'
-var _ = require('lodash');
-const moment = require('moment-timezone');
+import _ from 'lodash';
+import moment from 'moment-timezone';
 
-export async function getTodayRadioText() {
+export async function getTodayRadioText():Promise<string> {
     const data = await gotResponseBody(API_URL);
     const today = getToday(data);
 

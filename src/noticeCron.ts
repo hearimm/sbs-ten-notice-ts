@@ -3,9 +3,11 @@ import { scheduleTextReaderService } from './services/scheduleTextReader/schedul
 import { isNoticeUpdated } from './services/notice/isNoticeUpdated';
 import { getNoticeText } from './services/notice/getNoticeText';
 import { sendMessage } from './util/telegramHelper';
-const moment = require('moment-timezone');
+import moment from 'moment-timezone';
 
-const config = require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
+
 const runAll = async () => {
     moment.tz.setDefault("Asia/Seoul");
     console.log(moment().format('YYYYMMDD_HHmmss'))

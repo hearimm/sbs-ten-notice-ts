@@ -3,7 +3,7 @@ import { sendQueue } from '../../util/queueHelper';
 import { isNoticeUpdated } from './isNoticeUpdated';
 import moment from 'moment-timezone';
 
-export async function writeNoticeTextFile(noticeText: string) { // deprecated
+export async function writeNoticeTextFile(noticeText: string):Promise<void> { // deprecated
     if (await isNoticeUpdated(noticeText)) {
         fileWrite(`${process.env.NOTICE_HISTORY_DIR_PATH}/noticeLatest${moment().format('_YYYYMMDD_HHmmss')}.txt`, noticeText);
         fileWrite(process.env.NOTICE_LATEST_PATH, noticeText);

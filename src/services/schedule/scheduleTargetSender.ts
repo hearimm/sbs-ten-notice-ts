@@ -1,8 +1,8 @@
 import { deleteManyById, insertMany } from "../db/mongoDbHelper";
 import { getScheduleToTelegram } from "./getScheduleToTelegram";
-const _ = require("lodash");
+import _ from "lodash";
 
-export async function scheduleTargetSend() {
+export async function scheduleTargetSend():Promise<void> {
     const array = await getScheduleToTelegram()
     if(_.isEmpty(array)) { return }
     await insertMany('telegram',array)

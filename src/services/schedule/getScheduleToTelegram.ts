@@ -1,8 +1,8 @@
-const moment = require('moment-timezone');
+import moment from 'moment-timezone';
 import { getClient } from "../db/mongoDbHelper";
 
 
-export const getScheduleToTelegram = async () => {
+export const getScheduleToTelegram = async ():Promise<Record<string, string>[]> => {
     const client = await getClient();
     if (!client) { return; }
 

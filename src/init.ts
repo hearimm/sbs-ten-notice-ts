@@ -1,5 +1,6 @@
 import { mkdir } from "./util/fileHelper"
-const config = require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
 
 const runAll = async () => {
     const targetDir = [

@@ -1,6 +1,6 @@
 import { getClient } from "../db/mongoDbHelper";
 
-export const getTelegram = async () => {
+export const getTelegram = async ():Promise<Record<string,string>[]> => {
     const client = await getClient();
     if (!client) { return; }
 

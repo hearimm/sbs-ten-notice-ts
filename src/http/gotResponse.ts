@@ -1,6 +1,5 @@
 import got from 'got';
 import { HttpProxyAgent } from 'hpagent';
-const _ = require('lodash');
 import { ResponseBody } from '../interfaces/responseEntities';
 
 export const gotResponseBody = async (url: string): Promise<ResponseBody> => {

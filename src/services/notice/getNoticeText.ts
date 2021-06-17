@@ -1,10 +1,10 @@
 import { htmlToTextWordwrap } from '../../util/htmlToText';
 import { gotResponseBody } from '../../http/gotResponse';
-import * as _ from "lodash";
+import _ from "lodash";
 import { ResponseBody } from '../../interfaces/responseEntities';
 import { API_URL } from "../../constant/apiUrl";
 
-export async function getNoticeText() {
+export async function getNoticeText():Promise<string> {
     const description = await getNoticeLayerDescriptionInvoke();
     return htmlToTextWordwrap(description);
 }

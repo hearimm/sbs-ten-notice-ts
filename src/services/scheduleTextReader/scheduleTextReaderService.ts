@@ -1,15 +1,10 @@
-import { existsSync, fileDelete, fileWrite, readFile } from "../../util/fileHelper"
-import { clearQueue, sendQueue } from "../../util/queueHelper";
-import * as _ from "lodash";
-import { isNoticeUpdated } from "../notice/isNoticeUpdated";
-import { getNoticeText } from "../notice/getNoticeText";
 import { clearCollection, insertMany } from "../db/mongoDbHelper";
-const moment = require('moment-timezone')
+import moment from 'moment-timezone';
 
 const monthRegxp = new RegExp(/[0-1]?[0-9]\/[0-3]?[0-9]/);
-const timeRegxp = new RegExp(/[0-2]?[0-9]\:[0-5]?[0-9]/);
+const timeRegxp = new RegExp(/[0-2]?[0-9]:[0-5]?[0-9]/);
 
-export async function scheduleTextReaderService(noticeText:string) {
+export async function scheduleTextReaderService(noticeText:string):Promise<void> {
     await clearCollection('send_target')
     const array = getScheduleArray(noticeText);
     await insertMany('send_target',array);

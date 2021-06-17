@@ -1,9 +1,9 @@
 import { sendMessage } from "../../util/telegramHelper";
 import { clearCollection } from "../db/mongoDbHelper";
 import { getTelegram } from "./getTelegram";
-const _ = require("lodash");
+import _ from "lodash";
 
-export async function sendTelegramQueue() {
+export async function sendTelegramQueue():Promise<void> {
     await sendAll()
 }
 

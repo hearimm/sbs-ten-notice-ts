@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import { getClient } from "../db/mongoDbHelper";
 
-export async function isNoticeUpdated(noticeText: string) {
+export async function isNoticeUpdated(noticeText: string):Promise<boolean> {
     const beforeNoticeText = await getNoticeLatest();
     return beforeNoticeText !== noticeText;
 }
