@@ -3,9 +3,9 @@ import { clearCollection, deleteManyById, getCollectionCount, insertMany, insert
 import dotenv from 'dotenv'
 
 describe('mongoDb helper Test', () => {
-    dotenv.config()
+    dotenv.config({ path: '.env.test' })
   
-    const MONGO_TEST_URI = process.env.MONGO_TEST_URI
+    const MONGO_TEST_URI = process.env.MONGO_URI
     const MONGO_DB_NAME = 'sbs-ten-notice'
     let connection: MongoClient;
     let db: Db;

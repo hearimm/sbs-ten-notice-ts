@@ -4,9 +4,9 @@ import { insertNoticeLatestAndHistory } from "../src/services/notice/insertNotic
 import dotenv from "dotenv";
 
 describe('mongodb Test', () => {
-  dotenv.config()
+  dotenv.config({ path: '.env.test' })
 
-  const MONGO_TEST_URI = process.env.MONGO_TEST_URI
+  const MONGO_TEST_URI = process.env.MONGO_URI
   const MONGO_DB_NAME = 'sbs-ten-notice'
   let connection: MongoClient;
   let db: Db;
@@ -25,37 +25,31 @@ describe('mongodb Test', () => {
 
   test('should clear collection notice_latest test before', async () => {
     const collectionName = 'notice_latest'
-    await clearCollection(collectionName)
-    const count = await getCollectionCount(collectionName)
-    expect(count).toBe(0)
+    const result = await clearCollection(collectionName)
+    expect(result.result.ok).toBe(1)
   });
 
   test('should clear collection notice_history test before', async () => {
     const collectionName = 'notice_history'
-    await clearCollection(collectionName)
-    const count = await db.collection(collectionName).find({}).count()
-    expect(count).toBe(0)
+    const result = await clearCollection(collectionName)
+    expect(result.result.ok).toBe(1)
   });
 
   test('should mongodb helper get connection', async () => {
-    await insertNoticeLatestAndHistory('123')
-    const result = await db.collection('notice_latest').find({}).count();
-    const resultHistory = await db.collection('notice_history').find({}).count();
-    expect(result).toBe(1)
-    expect(resultHistory).toBe(1)
+    const result = await insertNoticeLatestAndHistory('123')
+    expect(result.latest.insertedCount).toBe(1)
+    expect(result.history.insertedCount).toBe(1)
   });
 
   test('should clear collection notice_latest test after', async () => {
     const collectionName = 'notice_latest'
-    await clearCollection(collectionName)
-    const count = await getCollectionCount(collectionName)
-    expect(count).toBe(0)
+    const result = await clearCollection(collectionName)
+    expect(result.deletedCount).toBe(1)
   });
 
   test('should clear collection notice_history test after', async () => {
     const collectionName = 'notice_history'
-    await clearCollection(collectionName)
-    const count = await db.collection(collectionName).find({}).count()
-    expect(count).toBe(0)
+    const result = await clearCollection(collectionName)
+    expect(result.deletedCount).toBe(1)
   });
 });

@@ -65,7 +65,7 @@ export async function insertMany(collectionStr: string, items: Record<string, un
 }
 
 export async function getClient():Promise<MongoClient> {
-    const uri = _.isNil(process.env.MONGO_TEST_URI) ? process.env.MONGO_URI : process.env.MONGO_TEST_URI
+    const uri = process.env.MONGO_URI
     try {
         return await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     } catch (error) {

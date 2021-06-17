@@ -1,7 +1,8 @@
 import moment from 'moment-timezone';
+import { InsertOneWriteOpResult } from 'mongodb';
 import { getClient } from "../db/mongoDbHelper";
 
-export async function insertNoticeLatestAndHistory(noticeText: string):Promise<void> {
+export async function insertNoticeLatestAndHistory(noticeText: string):Promise<{ latest: InsertOneWriteOpResult<any>; history: InsertOneWriteOpResult<any>; }> {
     const client = await getClient();
 
     try {
@@ -15,8 +16,7 @@ export async function insertNoticeLatestAndHistory(noticeText: string):Promise<v
         const historyCollection = client.db("sbs-ten-notice").collection("notice_history");
         const resultHistory = await historyCollection.insertOne(newItem);
 
-        console.log('insert latest result', result.insertedId);
-        console.log('insert history result', resultHistory.insertedId);
+        return {latest: result, history: resultHistory}
     } catch (err) {
         console.log(err);
         throw new Error(err);
