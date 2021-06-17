@@ -1,5 +1,5 @@
 import { Db, MongoClient } from 'mongodb';
-import { clearCollection, deleteManyById, getCollectionCount, insertMany, insertOne } from '../src/services/db/mongoDbHelper';
+import { clearCollection, getCollectionCount } from '../src/services/db/mongoDbHelper';
 import { insertNoticeLatestAndHistory } from "../src/services/notice/insertNoticeLatestAndHistory";
 
 describe('mongodb Test', () => {
@@ -22,14 +22,14 @@ describe('mongodb Test', () => {
     await connection.close();
   });
 
-  test('should clear notice_latest collection', async () => {
+  test('should clear collection notice_latest test before', async () => {
     const collectionName = 'notice_latest'
     await clearCollection(collectionName)
     const count = await getCollectionCount(collectionName)
     expect(count).toBe(0)
   });
 
-  test('should clear notice_history collection', async () => {
+  test('should clear collection notice_history test before', async () => {
     const collectionName = 'notice_history'
     await clearCollection(collectionName)
     const count = await db.collection(collectionName).find({}).count()
@@ -44,37 +44,17 @@ describe('mongodb Test', () => {
     expect(resultHistory).toBe(1)
   });
 
-  test('should clear before test collection', async () => {
-    const users = db.collection('users');
-    await users.deleteMany({})
-    const count = await users.find({}).count()
+  test('should clear collection notice_latest test after', async () => {
+    const collectionName = 'notice_latest'
+    await clearCollection(collectionName)
+    const count = await getCollectionCount(collectionName)
     expect(count).toBe(0)
   });
 
-  test('should insertOne', async () => {
-    const mockUser = {_id: 'some-user-id', name: 'John'};
-    await insertOne('users',mockUser)
-    const users = db.collection('users');
-    const insertedUser = await users.findOne({_id: 'some-user-id'});
-    expect(insertedUser).toEqual(mockUser);
-  });
-
-  test('should insertMany and DeleteMany', async () => {
-    const mockUser = [{_id: '1', name: 'John'}, {_id: '2', name: 'John2'}];
-    await insertMany('insertMany',mockUser)
-
-    const insertCount = await getCollectionCount('insertMany')
-    expect(insertCount).toBe(2)
-
-    await deleteManyById('insertMany', ['1','2'])
-    const delCount = await getCollectionCount('insertMany')
-    expect(delCount).toBe(0)
-  });
-
-  test('should clear after test collection', async () => {
-    const users = db.collection('users');
-    await users.deleteMany({})
-    const count = await users.find({}).count()
+  test('should clear collection notice_history test after', async () => {
+    const collectionName = 'notice_history'
+    await clearCollection(collectionName)
+    const count = await db.collection(collectionName).find({}).count()
     expect(count).toBe(0)
   });
 });
