@@ -15,7 +15,7 @@ export async function scheduleTextReaderService(noticeText:string):Promise<SendT
 async function inesrtSendTarget(array:Record<string, unknown>[]):Promise<SendTarget[]> {
     let mongoose:Mongoose
     try{
-        mongoose = await connect(process.env.MONGO_URI + '/sbs-ten-notice', {
+        mongoose = await connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });

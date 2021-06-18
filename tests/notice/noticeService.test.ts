@@ -23,9 +23,13 @@ describe('mongodb Test', () => {
   });
 
   test('should mongodb helper get connection', async () => {
-    const result = await noticeService('123')
-    expect(result.latest.text).toBe('123')
-    expect(result.history.text).toBe('123')
+    const testJson = await import('../../test_resources/noticeLatest.json');
+    const result = await noticeService(testJson.text)
+    expect(result.latest.text).toBe(testJson.text)
+    expect(result.history.text).toBe(testJson.text)
+
+    const resultNull = await noticeService(testJson.text)
+    expect(resultNull).toBe(undefined)
   });
 
 });

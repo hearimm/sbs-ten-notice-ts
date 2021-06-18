@@ -12,11 +12,11 @@ export async function isNoticeUpdated(noticeText: string):Promise<boolean> {
 async function getNoticeLatest(): Promise<string> {
     let mongoose:Mongoose
     try{
-        mongoose = await connect(process.env.MONGO_URI + '/sbs-ten-notice', {
+        mongoose = await connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
-        const result = NoticeLatestModel.findOne({});
+        const result = await NoticeLatestModel.findOne({});
         return _.get(result, 'text')
     }catch(err){
         throw new Error(err)

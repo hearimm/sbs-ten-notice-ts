@@ -7,7 +7,7 @@ import { NoticeHistoryModel } from '../db/model/noticeHistoryModel';
 export async function insertNoticeLatestAndHistory(noticeText: string):Promise<{ latest: NoticeLatest; history: NoticeLatest; }> {
     let mongoose:Mongoose
     try{
-        mongoose = await connect(process.env.MONGO_URI + '/sbs-ten-notice', {
+        mongoose = await connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
