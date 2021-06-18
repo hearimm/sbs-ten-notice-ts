@@ -13,11 +13,7 @@ export const gotResponseBody = async (url: string): Promise<ResponseBody> => {
 };
 
 const gotResponse = async (url:string) => {
-    try {
-        return process.env.PROXY ? gotProxy(url) : got(url);
-    } catch (error) {
-        throw new Error(error);
-    }
+    return process.env.PROXY ? gotProxy(url) : got(url);
 };
 
 async function gotProxy(url:string) {

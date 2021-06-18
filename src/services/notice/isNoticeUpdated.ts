@@ -1,25 +1,26 @@
-import * as _ from "lodash";
-import { getClient } from "../db/mongoDbHelper";
+import _ from "lodash";
+import { connect, Mongoose } from 'mongoose';
+import { NoticeLatestModel } from '../db/model/noticeLatestModel';
 
 export async function isNoticeUpdated(noticeText: string):Promise<boolean> {
+    if(_.isEmpty(noticeText)) { return false }
     const beforeNoticeText = await getNoticeLatest();
     return beforeNoticeText !== noticeText;
 }
 
 
 async function getNoticeLatest(): Promise<string> {
-    const client = await getClient();
-    if (!client) { return; }
-
-    let res = null;
-    try {
-        const collection = client.db("sbs-ten-notice").collection("notice_latest");
-        res = await collection.findOne({});
-    } catch (err) {
-        console.log(err);
-    } finally {
-        client.close();
+    let mongoose:Mongoose
+    try{
+        mongoose = await connect(process.env.MONGO_URI + '/sbs-ten-notice', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        const result = NoticeLatestModel.findOne({});
+        return _.get(result, 'text')
+    }catch(err){
+        throw new Error(err)
+    }finally {
+        mongoose.connection.close()
     }
-    const result = _.get(res, 'text');
-    return result;
 }

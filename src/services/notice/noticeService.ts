@@ -1,13 +1,14 @@
+import { NoticeLatest } from "../db/model/noticeLatestModel";
 import { insertNoticeLatestAndHistory } from "./insertNoticeLatestAndHistory";
 import { isNoticeUpdated } from "./isNoticeUpdated";
 
-export async function noticeService(noticeText: string):Promise<void> {
-    await insertNotice(noticeText);
+export async function noticeService(noticeText: string):Promise<{ latest: NoticeLatest; history: NoticeLatest; }> {
+    return await insertNotice(noticeText);
 }
 
 const insertNotice = async(noticeText:string) => {
     if (!await isNoticeUpdated(noticeText)) { return }
-    await insertNoticeLatestAndHistory(noticeText)
+    return await insertNoticeLatestAndHistory(noticeText)
 }
 
 
