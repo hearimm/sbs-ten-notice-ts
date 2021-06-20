@@ -11,7 +11,7 @@ export async function insertNoticeLatestAndHistory(noticeText: string):Promise<{
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
-        NoticeLatestModel.findOneAndDelete({});
+        NoticeLatestModel.deleteMany({});
         const newItem = {
             date: moment().format('YYYYMMDD_HHmmss'),
             text: noticeText
