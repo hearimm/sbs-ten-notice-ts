@@ -1,7 +1,7 @@
 import { noticeService } from '../../src/services/notice/noticeService';
 
-describe('mongodb Test', () => {
-
+describe('noticeService', () => {
+  process.env.TEST_SUITE = 'noticeService'
   test('should noticeService work', async () => {
     const testJson = await import('../../test_resources/noticeLatest.json');
     const result = await noticeService(testJson.text)

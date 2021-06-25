@@ -2,17 +2,21 @@ import { connect, Mongoose } from 'mongoose';
 import { NoticeHistoryModel } from '../src/services/db/model/noticeHistoryModel';
 import { NoticeLatestModel } from '../src/services/db/model/noticeLatestModel';
 import { UserModel } from '../src/services/db/model/userModel';
+import { getConnectionUri } from '../src/services/db/mongoDbHelper';
 
 describe('should mongoose work well', () => {
     let mongoose: Mongoose;
     beforeAll(async () => {
-        mongoose = await connect(process.env.MONGO_URL, {
+        process.env.TEST_SUITE = 'mongoose-test'
+        const uri = getConnectionUri()
+        console.log(uri)
+        mongoose = await connect(uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
     })
     afterAll(() => {
-        mongoose.disconnect()
+        mongoose.connection.close()
     })
 
     describe('should User Model work well', () => {

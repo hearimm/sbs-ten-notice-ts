@@ -17,7 +17,6 @@ async function clearAfterInesrtSendTarget(array:Record<string, unknown>[]):Promi
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
-        console.log('mongoose.connection.db',mongoose.connection.db);
         await SendTargetModel.deleteMany({})
         const result = await SendTargetModel.insertMany(array)
         return result

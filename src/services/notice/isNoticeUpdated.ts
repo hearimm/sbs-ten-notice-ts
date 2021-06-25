@@ -17,7 +17,7 @@ export async function isNoticeUpdated(noticeText: string):Promise<boolean> {
 async function getNoticeLatest(): Promise<string> {
     let mongoose:Mongoose
     try{
-        mongoose =await connect();
+        mongoose = await connect();
         const result = await NoticeLatestModel.findOne({});
         return _.get(result, 'text')
     }catch(err){

@@ -1,11 +1,12 @@
 import { MongoClient } from 'mongodb';
-import { clearCollection } from '../../src/services/db/mongoDbHelper';
+import { clearCollection, getConnectionUri } from '../../src/services/db/mongoDbHelper';
 import { scheduleTextReaderService } from '../../src/services/scheduleTextReader/scheduleTextReaderService';
 import { SendTargetModel } from '../../src/services/db/model/sendTargetModel';
 import { connect, Mongoose } from 'mongoose';
 
-describe('mongodb Test', () => {
-  const MONGO_TEST_URI = process.env.MONGO_URL
+describe('scheduleTextReaderService', () => {
+  process.env.TEST_SUITE = 'scheduleTextReaderService'
+  const MONGO_TEST_URI = getConnectionUri()
   let connection: MongoClient;
 
   beforeAll(async () => {

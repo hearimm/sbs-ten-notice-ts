@@ -4,14 +4,9 @@ import { scheduleTargetSend } from "../../src/services/schedule/scheduleTargetSe
 import { Mongoose } from "mongoose";
 
 describe("mongodb Test", () => {
-  const MONGO_TEST_URI = process.env.MONGO_URL;
+  process.env.TEST_SUITE = 'scheduleTargetSender-test'
   beforeAll(async () => {
-    await afterDelete(MONGO_TEST_URI);
-    await beforeInsert(MONGO_TEST_URI)
-  });
-
-  afterAll(async () => {
-    await afterDelete(MONGO_TEST_URI);
+    await beforeInsert()
   });
 
   test("should schedule target send insert items", async () => {
@@ -20,10 +15,10 @@ describe("mongodb Test", () => {
   });
 });
 
-async function beforeInsert(uri: string) {
+async function beforeInsert() {
   let conn:Mongoose;
   try {
-    conn = await connect(uri);
+    conn = await connect();
     await SendTargetModel.insertMany([
       {
         time: "202106240000",
@@ -41,16 +36,5 @@ async function beforeInsert(uri: string) {
   }
 }
 
-async function afterDelete(uri: string) {
-  let conn:Mongoose;
-  try {
-    conn = await connect(uri);
-    await SendTargetModel.deleteMany({});
-  } catch (error) {
-    throw new Error(error);
-  } finally {
-    conn.connection.close();
-  }
-}
 
 

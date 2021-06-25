@@ -1,23 +1,7 @@
-import { Db, MongoClient } from 'mongodb';
 import { clearCollection, deleteManyById, getCollectionCount, insertMany, insertOne } from '../src/services/db/mongoDbHelper';
 
 describe('mongoDb helper Test', () => {
-    const MONGO_TEST_URI = process.env.MONGO_URL
-    const MONGO_DB_NAME = 'sbs-ten-notice'
-    let connection: MongoClient;
-    let db: Db;
-  
-    beforeAll(async () => {
-      connection = await MongoClient.connect(MONGO_TEST_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      });
-      db = connection.db(MONGO_DB_NAME);
-    });
-  
-    afterAll(async () => {
-      await connection.close();
-    });
+    process.env.TEST_SUITE = 'mongodb-helper'
   
     test('should clear collection before test', async () => {
       const result = await clearCollection('users');
@@ -47,10 +31,9 @@ describe('mongoDb helper Test', () => {
     });
   
     test('should clear collection after test', async () => {
-      const users = db.collection('users');
       const result = await clearCollection('users');
       expect(result.result.ok).toBe(1)
-      const count = await users.find({}).count()
+      const count = await getCollectionCount('users')
       expect(count).toBe(0)
     });
   

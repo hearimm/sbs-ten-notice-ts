@@ -1,6 +1,7 @@
 import { isNoticeUpdated } from '../../src/services/notice/isNoticeUpdated';
 
-describe('mongodb Test', () => {
+describe('isNoticeUpdated', () => {
+    process.env.TEST_SUITE = 'isNoticeUpdated'
     test('should isNoticeUpdated boolean true check', async () => {
         const result = await isNoticeUpdated('blahbalh');
         expect(result).toBe(true)

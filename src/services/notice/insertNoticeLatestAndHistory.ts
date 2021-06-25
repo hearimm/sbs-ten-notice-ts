@@ -1,16 +1,14 @@
 import moment from 'moment-timezone';
-import { connect, Mongoose } from 'mongoose';
+import { Mongoose } from 'mongoose';
 import { NoticeLatest, NoticeLatestModel } from '../db/model/noticeLatestModel';
 import { NoticeHistoryModel } from '../db/model/noticeHistoryModel';
+import { connect } from '../db/mongoDbHelper';
 
 
 export async function insertNoticeLatestAndHistory(noticeText: string):Promise<{ latest: NoticeLatest; history: NoticeLatest; }> {
     let mongoose:Mongoose
     try{
-        mongoose = await connect(process.env.MONGO_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        mongoose = await connect();
         await NoticeLatestModel.deleteMany({});
         const newItem = {
             date: moment().format('YYYYMMDD_HHmmss'),
