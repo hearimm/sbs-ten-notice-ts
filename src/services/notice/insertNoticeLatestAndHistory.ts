@@ -7,11 +7,11 @@ import { NoticeHistoryModel } from '../db/model/noticeHistoryModel';
 export async function insertNoticeLatestAndHistory(noticeText: string):Promise<{ latest: NoticeLatest; history: NoticeLatest; }> {
     let mongoose:Mongoose
     try{
-        mongoose = await connect(process.env.MONGO_URI, {
+        mongoose = await connect(process.env.MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
-        NoticeLatestModel.deleteMany({});
+        await NoticeLatestModel.deleteMany({});
         const newItem = {
             date: moment().format('YYYYMMDD_HHmmss'),
             text: noticeText

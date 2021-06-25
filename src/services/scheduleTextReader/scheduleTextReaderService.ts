@@ -1,4 +1,3 @@
-import { clearCollection } from "../db/mongoDbHelper";
 import moment from 'moment-timezone';
 import { SendTarget, SendTargetModel } from "../db/model/sendTargetModel";
 import { Mongoose, connect } from "mongoose";
@@ -7,18 +6,19 @@ const monthRegxp = new RegExp(/[0-1]?[0-9]\/[0-3]?[0-9]/);
 const timeRegxp = new RegExp(/[0-2]?[0-9]:[0-5]?[0-9]/);
 
 export async function scheduleTextReaderService(noticeText:string):Promise<SendTarget[]> {
-    await clearCollection('send_target')
     const array = getScheduleArray(noticeText);
-    return await inesrtSendTarget(array)
+    return await clearAfterInesrtSendTarget(array)
 }
 
-async function inesrtSendTarget(array:Record<string, unknown>[]):Promise<SendTarget[]> {
+async function clearAfterInesrtSendTarget(array:Record<string, unknown>[]):Promise<SendTarget[]> {
     let mongoose:Mongoose
     try{
-        mongoose = await connect(process.env.MONGO_URI, {
+        mongoose = await connect(process.env.MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
+        console.log('mongoose.connection.db',mongoose.connection.db);
+        await SendTargetModel.deleteMany({})
         const result = await SendTargetModel.insertMany(array)
         return result
     }catch(err){

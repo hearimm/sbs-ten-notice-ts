@@ -1,21 +1,23 @@
 import _ from "lodash";
-import { connect, Mongoose } from 'mongoose';
+import { Mongoose } from 'mongoose';
 import { NoticeLatestModel } from '../db/model/noticeLatestModel';
+import { connect } from "../db/mongoDbHelper";
 
 export async function isNoticeUpdated(noticeText: string):Promise<boolean> {
     if(_.isEmpty(noticeText)) { return false }
     const beforeNoticeText = await getNoticeLatest();
-    return beforeNoticeText !== noticeText;
+    const result = beforeNoticeText !== noticeText;
+    if(result){
+        console.log('beforeNoticeText >> \n',beforeNoticeText)
+    }
+    return result;
 }
 
 
 async function getNoticeLatest(): Promise<string> {
     let mongoose:Mongoose
     try{
-        mongoose = await connect(process.env.MONGO_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        mongoose =await connect();
         const result = await NoticeLatestModel.findOne({});
         return _.get(result, 'text')
     }catch(err){

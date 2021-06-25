@@ -1,12 +1,11 @@
 import { MongoClient } from 'mongodb';
-import { clearCollection, getCollectionCount } from '../../src/services/db/mongoDbHelper';
-import dotenv from "dotenv";
+import { clearCollection } from '../../src/services/db/mongoDbHelper';
 import { scheduleTextReaderService } from '../../src/services/scheduleTextReader/scheduleTextReaderService';
+import { SendTargetModel } from '../../src/services/db/model/sendTargetModel';
+import { connect, Mongoose } from 'mongoose';
 
 describe('mongodb Test', () => {
-  dotenv.config({ path: '.env.test' })
-
-  const MONGO_TEST_URI = process.env.MONGO_URI
+  const MONGO_TEST_URI = process.env.MONGO_URL
   let connection: MongoClient;
 
   beforeAll(async () => {
@@ -22,18 +21,32 @@ describe('mongodb Test', () => {
     await connection.close();
   });
 
-  test('should mongodb helper get connection', async () => {
+  test('should scheduleTextReaderService work well', async () => {
     const testJson = await import('../../test_resources/noticeLatest.json');
     const result = await scheduleTextReaderService(testJson.text)
-    const cnt = await getCollectionCount('send_target')
-
-    expect(cnt).toBe(result.length)
+    console.log(result)
+    expect(result.length).toBe(4)
   });
-
 });
 
 const setupClearCollection = async () => {
   const latest = 'send_target'
   const resultLatest = await clearCollection(latest)
   expect(resultLatest.result.ok).toBe(1)
+}
+
+async function getSendTargets():Promise<number> {
+    let mongoose:Mongoose
+    try{
+        mongoose = await connect(process.env.MONGO_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        const result = await SendTargetModel.count({})
+        return result
+    }catch(err){
+        throw new Error(err)
+    }finally {
+        mongoose.connection.close()
+    }
 }

@@ -1,10 +1,8 @@
-import dotenv from 'dotenv'
 import { isNoticeUpdated } from '../../src/services/notice/isNoticeUpdated';
 
 describe('mongodb Test', () => {
-    dotenv.config({ path: '.env.test' })
     test('should isNoticeUpdated boolean true check', async () => {
-        const result = await isNoticeUpdated('123');
+        const result = await isNoticeUpdated('blahbalh');
         expect(result).toBe(true)
     });
 

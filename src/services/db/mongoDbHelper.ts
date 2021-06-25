@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { DeleteWriteOpResultObject, InsertOneWriteOpResult, InsertWriteOpResult, MongoClient, WithId } from 'mongodb';
+import { connect as mongooseConnect, Mongoose } from 'mongoose';
 
 export async function insertOne(collectionStr: string, item: Record<string, unknown>) :Promise<InsertOneWriteOpResult<WithId<Record<string, unknown>>>>{
     const client = await getClient()
@@ -65,8 +66,19 @@ export async function insertMany(collectionStr: string, items: Record<string, un
     }
 }
 
+export async function connect(uri:string=process.env.MONGO_URL): Promise<Mongoose> {
+    console.log('connect uri', uri)
+    try{
+        return await mongooseConnect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    } catch (error) {
+        console.error(error)
+        throw new Error(error);
+    }
+}
+
 export async function getClient():Promise<MongoClient> {
-    const uri = process.env.MONGO_URI
+    const uri = process.env.MONGO_URL
+    console.log('getClient uri', uri)
     try {
         return await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     } catch (error) {

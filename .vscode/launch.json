@@ -9,24 +9,8 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}/script.ts",
-            "preLaunchTask": "tsc: build - tsconfig.json",
             "outFiles": [
                 "${workspaceFolder}/dist/**/*.js"
-            ]
-        },
-        {
-            "type": "node",
-            "name": "vscode-jest-tests-1624027676362",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "disableOptimisticBPs": true,
-            "program": "${workspaceFolder}\\npx",
-            "cwd": "${workspaceFolder}",
-            "args": [
-                "jest",
-                "--runInBand",
-                "--watchAll=true"
             ]
         },
         {
@@ -36,10 +20,9 @@
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "disableOptimisticBPs": true,
-            "program": "${workspaceFolder}/npx",
+            "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
             "cwd": "${workspaceFolder}",
             "args": [
-                "jest",
                 "--runInBand",
                 "--watchAll=false"
             ]

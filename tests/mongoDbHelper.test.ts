@@ -1,11 +1,8 @@
 import { Db, MongoClient } from 'mongodb';
 import { clearCollection, deleteManyById, getCollectionCount, insertMany, insertOne } from '../src/services/db/mongoDbHelper';
-import dotenv from 'dotenv'
 
 describe('mongoDb helper Test', () => {
-    dotenv.config({ path: '.env.test' })
-  
-    const MONGO_TEST_URI = process.env.MONGO_URI
+    const MONGO_TEST_URI = process.env.MONGO_URL
     const MONGO_DB_NAME = 'sbs-ten-notice'
     let connection: MongoClient;
     let db: Db;

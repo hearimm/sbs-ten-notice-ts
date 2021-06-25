@@ -1,5 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const tsPreset = require('ts-jest/jest-preset')
+const mongodbPreset = require('@shelf/jest-mongodb/jest-preset')
+
 module.exports = {
-  preset: 'ts-jest',
+  ...tsPreset,
+  ...mongodbPreset,
+  // preset: 'ts-jest',
   testEnvironment: 'node',
   // Automatically clear mock calls and instances between every test
   clearMocks: true,

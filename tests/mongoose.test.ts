@@ -1,14 +1,12 @@
-import dotenv from 'dotenv'
 import { connect, Mongoose } from 'mongoose';
 import { NoticeHistoryModel } from '../src/services/db/model/noticeHistoryModel';
 import { NoticeLatestModel } from '../src/services/db/model/noticeLatestModel';
 import { UserModel } from '../src/services/db/model/userModel';
 
 describe('should mongoose work well', () => {
-    dotenv.config({ path: '.env.test' })
     let mongoose: Mongoose;
     beforeAll(async () => {
-        mongoose = await connect('mongodb://localhost:27017/test', {
+        mongoose = await connect(process.env.MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
