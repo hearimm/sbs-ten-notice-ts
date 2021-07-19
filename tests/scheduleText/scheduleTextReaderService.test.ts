@@ -7,6 +7,6 @@ describe('scheduleTextReaderService', () => {
     const testJson = await import('../../test_resources/noticeLatest.json');
     const result = await scheduleTextReaderService(testJson.text)
     console.log(result)
-    expect(result.length).toBe(4)
+    expect(result.length).toBe(0)
   });
 });

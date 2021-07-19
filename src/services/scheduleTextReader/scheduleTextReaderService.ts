@@ -1,13 +1,15 @@
 import moment from 'moment-timezone';
 import { SendTarget, SendTargetModel } from "../db/model/sendTargetModel";
 import { Mongoose, connect } from "mongoose";
+import _ from "lodash";
 
 const monthRegxp = new RegExp(/[0-1]?[0-9]\/[0-3]?[0-9]/);
 const timeRegxp = new RegExp(/[0-2]?[0-9]:[0-5]?[0-9]/);
 
 export async function scheduleTextReaderService(noticeText:string):Promise<SendTarget[]> {
-    const array = getScheduleArray(noticeText);
-    return await clearAfterInesrtSendTarget(array)
+    const scheduleArray = getScheduleArray(noticeText);
+    const afterScheduleArray = _.filter(scheduleArray, o => { return moment(o.time).isAfter() })
+    return await clearAfterInesrtSendTarget(afterScheduleArray)
 }
 
 async function clearAfterInesrtSendTarget(array:Record<string, unknown>[]):Promise<SendTarget[]> {
