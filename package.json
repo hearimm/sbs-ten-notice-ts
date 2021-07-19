@@ -2,7 +2,7 @@
   "name": "ts-node-test",
   "version": "1.0.0",
   "description": "",
-  "main": "script.ts",
+  "main": "noticeCron.ts",
   "scripts": {
     "init": "ts-node src/init.ts",
     "clean": "rimraf dist",
@@ -12,12 +12,10 @@
     "start:noticeCron": "npm run build && npm run script:noticeCron",
     "start:scheduleCron": "npm run build && npm run script:scheduleCron",
     "start:tenPmCron": "npm run build && npm run script:tenPmCron",
-    "clear:collection": "npm run build && npm run script:clearAllCollections",
     "script:cron": "npm run script:noticeCron && npm run script:scheduleCron",
     "script:noticeCron": "node ./dist/noticeCron.js",
     "script:scheduleCron": "node ./dist/scheduleCron.js",
     "script:tenPmCron": "node ./dist/tenPmCron.js",
-    "script:clearAllCollections": "node ./dist/clearAllCollections.js",
     "test": "jest",
     "lint": "eslint . --ext .js,.ts"
   },

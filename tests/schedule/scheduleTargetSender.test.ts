@@ -5,11 +5,14 @@ import { Mongoose } from "mongoose";
 
 describe("mongodb Test", () => {
   process.env.TEST_SUITE = 'scheduleTargetSender-test'
-  beforeAll(async () => {
-    await beforeInsert()
+
+  test("should empty schedule target result empty", async () => {
+    const result = await scheduleTargetSend();
+    expect(result.length).toBe(0);
   });
 
   test("should schedule target send insert items", async () => {
+    await beforeInsert()
     const result = await scheduleTargetSend();
     expect(result.length).toBe(2);
   });
