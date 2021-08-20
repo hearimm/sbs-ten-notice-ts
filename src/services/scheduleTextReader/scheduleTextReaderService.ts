@@ -6,9 +6,9 @@ import _ from "lodash";
 const monthRegxp = new RegExp(/[0-1]?[0-9]\/[0-3]?[0-9]/);
 const timeRegxp = new RegExp(/[0-2]?[0-9]:[0-5]?[0-9]/);
 
-export async function scheduleTextReaderService(noticeText:string):Promise<SendTarget[]> {
+export async function scheduleTextReaderService(noticeText:string, krTime:string):Promise<SendTarget[]> {
     const scheduleArray = getScheduleArray(noticeText);
-    const afterScheduleArray = _.filter(scheduleArray, o => { return moment(o.time).isAfter() })
+    const afterScheduleArray = _.filter(scheduleArray, o => { return moment(o.time,'YYYYMMDDHHmm').isAfter(moment(krTime,'YYYYMMDD_HHmmss')) })
     return await clearAfterInesrtSendTarget(afterScheduleArray)
 }
 

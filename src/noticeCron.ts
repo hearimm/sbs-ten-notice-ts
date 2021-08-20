@@ -17,7 +17,7 @@ const runAll = async () => {
         if(!await isNoticeUpdated(noticeText)) { return }
 
         await noticeService(noticeText);
-        await scheduleTextReaderService(noticeText);
+        await scheduleTextReaderService(noticeText, moment().format('YYYYMMDD_HHmmss'));
         await sendMessage(noticeText)
     } catch (error) {
         console.error(error)
