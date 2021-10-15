@@ -41,11 +41,9 @@ function getScheduleArray(noticeText: string) {
         }
         if (hasTimeText(e)) {
             time = getTimeText(e);
-            const m = moment(month + ' ' + time, "M/D HH:mm");
-            const text = e.trim();
             resultArray.push({
-                time: m.format('YYYYMMDDHHmm'),
-                text
+                time: getDateTimeText(month, time),
+                text: e.trim()
             });
         }
     }
@@ -65,4 +63,15 @@ function hasTimeText(text: string) {
 }
 function getTimeText(text: string) {
     return timeRegxp.exec(text)[0]
+}
+
+function getDateTimeText(month: string, time:string) {
+    const m = moment(month + ' ' + time, "M/D HH:mm");
+    if(isAM(m)) {
+        m.add(12,'h');
+    }
+    return m.format('YYYYMMDDHHmm');
+}
+function isAM(momentObj) {
+    return momentObj.format('A') === 'AM';
 }
